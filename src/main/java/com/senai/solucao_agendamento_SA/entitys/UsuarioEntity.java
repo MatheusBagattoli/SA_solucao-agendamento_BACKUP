@@ -18,6 +18,9 @@ public class UsuarioEntity {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
+    @Column(nullable = false,length = 10)
+    String matricula;
+
 
     @Column(unique = true,nullable = false)
     private String email;
@@ -29,10 +32,11 @@ public class UsuarioEntity {
     public UsuarioEntity() {
     }
 
-    public UsuarioEntity(Long id, String nome, LocalDate dataNascimento, String email, String senha) {
+    public UsuarioEntity(Long id, String nome, LocalDate dataNascimento, String matricula, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        this.matricula = matricula;
         this.email = email;
         this.senha = senha;
     }
@@ -59,6 +63,14 @@ public class UsuarioEntity {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public String getEmail() {

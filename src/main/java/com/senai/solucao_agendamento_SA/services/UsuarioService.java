@@ -1,5 +1,6 @@
 package com.senai.solucao_agendamento_SA.services;
 
+import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
 import com.senai.solucao_agendamento_SA.entitys.UsuarioEntity;
 import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
@@ -25,4 +26,20 @@ public class UsuarioService {
 
         usuarioMapeamento.EntityparaDto(usuarioEntity);
     }
+
+
+    //Cadastro usuario
+    public void cadastroUsuario(UsuarioCadastroDto cadastroDto){
+
+        if (usuarioRepository.existsByEmail(cadastroDto.email())){
+            throw new IllegalArgumentException("Email ja existente");
+        }
+        if(usuarioRepository.existsByMatricula(cadastroDto.matricula())){
+            throw new IllegalArgumentException("Matricula ja existente");
+        }
+        UsuarioEntity usuarioEntity = usuarioMapeamento.DtoparaEntity(cadastroDto);
+        usuarioRepository.save(usuarioEntity);
+    }
+
+
 }

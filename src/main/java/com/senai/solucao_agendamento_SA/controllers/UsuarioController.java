@@ -1,10 +1,14 @@
 package com.senai.solucao_agendamento_SA.controllers;
 
+import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
 import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
 import com.senai.solucao_agendamento_SA.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,5 +38,27 @@ public class UsuarioController {
             return "login";
         }
     }
+
+
+    //Cadastro usuario
+    @PostMapping("/cadastrarUsuario")
+    public String cadastrarUsuario(@Valid @ModelAttribute("usuario") UsuarioCadastroDto cadastroDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+
+        if(bindingResult.hasErrors()){
+            return "cadastrarUsuario";
+        }
+
+        try {
+            usuarioService.cadastroUsuario(cadastroDto);
+            redirectAttributes.addFlashAttribute("mensagem", "Usuario cadastrado com sucesso!");
+            return"redirect:/home";
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("erro", e.getMessage());
+            redirectAttributes.addFlashAttribute("erro",cadastroDto); // Mantem os dados digitados
+            return "redirect:/cadastrarUsuario";
+        }
+    }
+
+
 
 }

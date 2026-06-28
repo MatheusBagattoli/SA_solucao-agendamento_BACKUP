@@ -14,10 +14,11 @@ public class UsuarioMapeamento {
     //Converte DTO para Entity
     public UsuarioEntity DtoparaEntity(UsuarioCadastroDto usuarioDto){
         UsuarioEntity usuario = new UsuarioEntity();
-        usuario.setNome(usuario.getNome());
-        usuario.setDataNascimento(usuario.getDataNascimento());
-        usuario.setEmail(usuario.getEmail());
-        usuario.setSenha(usuario.getSenha());
+        usuario.setNome(usuarioDto.nome());
+        usuario.setDataNascimento(usuarioDto.dataNascimento());
+        usuario.setMatricula(usuarioDto.matricula());
+        usuario.setEmail(usuarioDto.email());
+        usuario.setSenha(usuarioDto.senha());
         return usuario;
     }
 
@@ -26,6 +27,7 @@ public class UsuarioMapeamento {
         return new UsuarioSaidaDto(
                 usuario.getNome(),
                 usuario.getDataNascimento(),
+                usuario.getMatricula(),
                 usuario.getEmail()
         );
     }

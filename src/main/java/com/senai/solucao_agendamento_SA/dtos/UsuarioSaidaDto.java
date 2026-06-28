@@ -6,6 +6,7 @@ public record UsuarioSaidaDto(
 
         String nome,
         LocalDate dataNascimento,
+        String matricula,
         String email
 ) {
 }

@@ -43,7 +43,7 @@
 
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form th:action="@{/cadastrarCliente}" th:object="${cliente}" method="post">
+                    <form th:action="@{/cadastrarUsuario}" th:object="${usuario}" method="post">
 
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
@@ -55,6 +55,12 @@
                             <label for="dataNascimento" class="form-label">Data nascimento</label>
                             <input type="date" class="form-control" id="dataNascimento" th:field="*{dataNascimento}" placeholder="Digite Data de nascimento" required>
                             <div class="text-danger small mt-1" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro no e-mail</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="matricula" class="form-label">Matricula</label>
+                            <input type="text" class="form-control" id="matricula" th:field="*{matricula}" placeholder="Digite o numero da matricula" required>
+                            <div class="text-danger small mt-1" th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}">Erro na matricula</div>
                         </div>
 
                         <div class="mb-3">
