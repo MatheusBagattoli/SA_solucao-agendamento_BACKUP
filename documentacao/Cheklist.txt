@@ -1,0 +1,15 @@
+  usuario
+	id [x]
+	nome [x]
+ 	e-mail [x]
+ 	senha [x]
+ 	matricula [ ]
+ 	data nascimento [x] (Falta validar data presente e maior de 18anos)
+
+  Regras:  
+[x] 1 - O sistema deverá garantir a unicidade de usuários através do campo de e-mail. 
+[ ] 2 – O sistema deverá obrigar o usuário a informar a senha na ação de criação de um usuário novo.
+[ ] 3 – A senha deve ter no mínimo 5 caracteres, conter números e letras. 
+[ ] 4 – O sistema deverá obrigar que o usuário informe o nome do usuário. 
+[ ] 5 - O sistema deverá obrigar que o usuário informe o número de matricula.
+[ ] 6 - O sistema deverá validar a data de nascimento do usuário para restringir que uma data no futuro seja informada ou que contabilize mais de 500 anos. 
