@@ -2,6 +2,7 @@ package com.senai.solucao_agendamento_SA.controllers;
 
 import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
+import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
 import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
 import com.senai.solucao_agendamento_SA.services.UsuarioService;
 import jakarta.validation.Valid;
@@ -11,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 public class UsuarioController {
@@ -58,6 +61,9 @@ public class UsuarioController {
             return "redirect:/cadastrarUsuario";
         }
     }
+
+
+
 
 
 

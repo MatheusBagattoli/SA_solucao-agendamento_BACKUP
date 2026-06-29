@@ -33,6 +33,7 @@ public class UsuarioMapeamento {
     }
 
 
+
     //Login
     public UsuarioEntity DtoparaEntityLogin(UsuarioLogin usuario){
         UsuarioEntity usuarioLogin = new UsuarioEntity();
@@ -40,5 +41,7 @@ public class UsuarioMapeamento {
         usuarioLogin.setSenha(usuario.senha());
         return usuarioLogin;
     }
+
+
 
 }

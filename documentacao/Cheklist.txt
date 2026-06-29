@@ -8,7 +8,7 @@
 
   Regras:  
 [x] 1 - O sistema deverá garantir a unicidade de usuários através do campo de e-mail. 
-[ ] 2 – O sistema deverá obrigar o usuário a informar a senha na ação de criação de um usuário novo.
+[x] 2 – O sistema deverá obrigar o usuário a informar a senha na ação de criação de um usuário novo.
 [x] 3 – A senha deve ter no mínimo 5 caracteres, conter números e letras. 
 [x] 4 – O sistema deverá obrigar que o usuário informe o nome do usuário. 
 [x] 5 - O sistema deverá obrigar que o usuário informe o número de matricula.
