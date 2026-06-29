@@ -63,14 +63,6 @@
                             <td th:text="${usuario.matricula}">...</td>
                             <td th:text="${usuario.email}">...</td>
                             <td class="text-end">
-                                <a class="btn btn-sm btn-outline-primary" th:href="@{/produtoatualizar/{id}(id=${produtos.id})}">Editar</a>
-                                <button th:data-id="${produtos.id}" class="excluir btn btn-sm btn-outline-danger">Excluir</button>
-                            </td>
-                        </tr>
-
-                        <tr th:if="${#lists.isEmpty(usuario)}">
-                            <td colspan="5" class="text-center text-secondary py-4">Nenhum usuario cadastrado no sistema.</td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>

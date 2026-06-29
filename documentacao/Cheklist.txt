@@ -4,7 +4,7 @@
  	e-mail [x]
  	senha [x]
  	matricula [x]
- 	data nascimento [x] (Falta validar data presente e maior de 18anos)
+ 	data nascimento [+-] (Falta validar data presente e maior de 18anos)
 
   Regras:  
 [x] 1 - O sistema deverá garantir a unicidade de usuários através do campo de e-mail. 
@@ -17,6 +17,6 @@
   CRUD:
 [x] Login.
 [x] Cadastra usuario.
-[ ] Listar todos usuarios.
+[+-] Listar todos usuarios.  (Falta fazer as mensagens caso não tenha nenhum usuario cadastrado.
 [ ] Atualizar usuario.
 [ ] Excluir usuario.

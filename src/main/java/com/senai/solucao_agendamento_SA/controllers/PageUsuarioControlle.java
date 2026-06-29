@@ -47,7 +47,7 @@ public class PageUsuarioControlle {
     @GetMapping("/listaUsuarios")
     public String getListaUsuarios(Model model){
         List<UsuarioSaidaDto> listaUsuarios = usuarioService.listaDeUsuarios();
-        model.addAttribute("usuario", listaUsuarios);
+        model.addAttribute("usuarios", listaUsuarios);
         return "listaUsuarios";
     }
 
