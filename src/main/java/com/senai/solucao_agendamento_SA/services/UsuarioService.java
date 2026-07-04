@@ -1,5 +1,6 @@
 package com.senai.solucao_agendamento_SA.services;
 
+import com.senai.solucao_agendamento_SA.dtos.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -59,6 +61,33 @@ public class UsuarioService {
             listaDeUsuariosDto.add(usuarioMapeamento.EntityparaDto(usuarioEntity));
         }
         return listaDeUsuariosDto;
+    }
+
+
+    //Obter usuario pela matricula
+    public UsuarioAtualizarDto obterUsuarioParaAtualizar(String matricula){
+
+        UsuarioEntity usuario = usuarioRepository.findByMatricula(matricula)
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+
+        return usuarioMapeamento.AtualizarUsuario(usuario);
+    }
+
+
+    //Atualizar Usuario
+    public boolean atualizarUsuario(UsuarioAtualizarDto dto){
+
+        UsuarioEntity usuario = usuarioRepository.findByMatricula(dto.getMatricula())
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+
+        usuario.setNome(dto.getEditarNome());
+        usuario.setDataNascimento(dto.getEditarDataNascimento());
+        usuario.setEmail(dto.getEditarEmail());
+        usuario.setSenha(dto.getEditarSenha());
+
+        usuarioRepository.save(usuario);
+
+        return true;
     }
 
 

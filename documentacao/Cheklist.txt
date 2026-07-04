@@ -18,5 +18,23 @@
 [x] Login.
 [x] Cadastra usuario.
 [+-] Listar todos usuarios.  (Falta fazer as mensagens caso não tenha nenhum usuario cadastrado.
-[ ] Atualizar usuario.
+[+-] Atualizar usuario.(falta as validações ler documento se fala sobre atualizar apartir do id, porque fiz usando a matricula, validar se o email ja existe)
 [ ] Excluir usuario.
+
+
+ Método obter usuario - para atualizar:
+- Recebe a matrícula do usuário.
+- Procura esse usuário no banco de dados usando o usuarioRepository.
+- Se o usuário não existir, lança uma exceção informando que ele não foi encontrado.
+- Se existir, converte a UsuarioEntity em um UsuarioAtualizarDto através do mapper.
+- Retorna o DTO para preencher os campos do formulário de edição.
+
+ Método atualizar usuario:
+- Recebe um DTO contendo os dados atualizados do usuário.
+- Procura no banco o usuário correspondente à matrícula informada no DTO.
+- Se o usuário não existir, lança uma exceção.
+- Se existir, atualiza os atributos da entidade (nome, data de nascimento, e-mail e 	 senha) com os novos valores do DTO.
+- Salva a entidade atualizada no banco de dados usando save().
+- Retorna true indicando que a atualização foi realizada com sucesso.
+
+

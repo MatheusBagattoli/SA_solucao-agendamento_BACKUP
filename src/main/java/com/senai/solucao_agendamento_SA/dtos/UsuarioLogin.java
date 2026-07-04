@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Size;
 
 public record UsuarioLogin(
 
+        Long id,
+
         @NotBlank
         @Email
         @Size(max=255)

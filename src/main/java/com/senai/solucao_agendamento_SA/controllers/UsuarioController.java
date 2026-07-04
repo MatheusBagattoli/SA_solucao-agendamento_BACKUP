@@ -1,5 +1,6 @@
 package com.senai.solucao_agendamento_SA.controllers;
 
+import com.senai.solucao_agendamento_SA.dtos.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class UsuarioController {
@@ -59,6 +61,27 @@ public class UsuarioController {
             redirectAttributes.addFlashAttribute("erro", e.getMessage());
             redirectAttributes.addFlashAttribute("erro",cadastroDto); // Mantem os dados digitados
             return "redirect:/cadastrarUsuario";
+        }
+    }
+
+    //Atualizar Usuario
+    @PostMapping("/atualizarUsuario")
+    public String atualizarUsuario(@Valid @ModelAttribute("usuario") UsuarioAtualizarDto dto, BindingResult result, RedirectAttributes redirectAttributes){
+
+        if(result.hasErrors()){
+            return "atualizarUsuario";
+        }
+
+        try {
+            usuarioService.atualizarUsuario(dto);
+
+            redirectAttributes.addFlashAttribute("mensagem", "Usuário atualizado com sucesso!");
+            return "redirect:/listaUsuarios";
+
+        } catch (Exception e) {
+
+            redirectAttributes.addFlashAttribute("erro", e.getMessage());
+            return "redirect:/atualizarUsuario/" + dto.getMatricula();
         }
     }
 

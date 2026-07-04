@@ -19,7 +19,7 @@ public class UsuarioEntity {
     private LocalDate dataNascimento;
 
     @Column(nullable = false,length = 10)
-    String matricula;
+    private String matricula;
 
 
     @Column(unique = true,nullable = false)

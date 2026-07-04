@@ -51,18 +51,25 @@
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">Data de nascimento</th>
-                            <th scope="col">Preço</th>
                             <th scope="col">Matricula</th>
+                            <th scope="col">Email</th>
                             <th scope="col" class="text-end">...</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="usuario : ${usuarios}">
-                            <td th:text="${usuario.nome}">...</td>
-                            <td th:text="${usuario.dataNascimento}">...</td>
-                            <td th:text="${usuario.matricula}">...</td>
-                            <td th:text="${usuario.email}">...</td>
+                            <td th:text="${usuario.nome}"></td>
+                            <td th:text="${usuario.dataNascimento}"></td>
+                            <td th:text="${usuario.matricula}"></td>
+                            <td th:text="${usuario.email}"></td>
+
                             <td class="text-end">
+                                <a class="btn btn-sm btn-outline-primary"
+                                   th:href="@{/atualizarUsuario/{matricula}(matricula=${usuario.matricula})}">
+                                    Editar
+                                </a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -1,6 +1,7 @@
 package com.senai.solucao_agendamento_SA.controllers;
 
 
+import com.senai.solucao_agendamento_SA.dtos.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
 import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
@@ -8,6 +9,7 @@ import com.senai.solucao_agendamento_SA.services.UsuarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -49,6 +51,16 @@ public class PageUsuarioControlle {
         List<UsuarioSaidaDto> listaUsuarios = usuarioService.listaDeUsuarios();
         model.addAttribute("usuarios", listaUsuarios);
         return "listaUsuarios";
+    }
+
+    @GetMapping("/atualizarUsuario/{matricula}")
+    public String getAtualizarUsuario(@PathVariable String matricula, Model model){
+
+        UsuarioAtualizarDto dto = usuarioService.obterUsuarioParaAtualizar(matricula);
+
+        model.addAttribute("usuario", dto);
+
+        return "atualizarUsuario";
     }
 
 

@@ -1,5 +1,6 @@
 package com.senai.solucao_agendamento_SA.mapper;
 
+import com.senai.solucao_agendamento_SA.dtos.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
 import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
@@ -40,6 +41,20 @@ public class UsuarioMapeamento {
         usuarioLogin.setEmail(usuario.email());
         usuarioLogin.setSenha(usuario.senha());
         return usuarioLogin;
+    }
+
+
+
+    //Atualizando o Usuario
+    public UsuarioAtualizarDto AtualizarUsuario(UsuarioEntity usuario){
+
+        return new UsuarioAtualizarDto(
+                usuario.getMatricula(),
+                usuario.getNome(),
+                usuario.getDataNascimento(),
+                usuario.getEmail(),
+                usuario.getSenha()
+        );
     }
 
 
