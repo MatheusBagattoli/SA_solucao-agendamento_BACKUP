@@ -19,7 +19,7 @@
 [x] Cadastra usuario.
 [+-] Listar todos usuarios.  (Falta fazer as mensagens caso não tenha nenhum usuario cadastrado.
 [+-] Atualizar usuario.(falta as validações ler documento se fala sobre atualizar apartir do id, porque fiz usando a matricula, validar se o email ja existe)
-[ ] Excluir usuario.
+[x] Excluir usuario.
 
 
  Método obter usuario - para atualizar:

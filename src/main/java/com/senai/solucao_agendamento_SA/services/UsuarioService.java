@@ -91,4 +91,10 @@ public class UsuarioService {
     }
 
 
+    //Excluir usuario
+    public void excluirUsuario(Long id){
+        usuarioRepository.deleteById(id);
+    }
+
+
 }

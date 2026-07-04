@@ -26,6 +26,7 @@ public class UsuarioMapeamento {
     //Converte Entity em Dto
     public UsuarioSaidaDto EntityparaDto(UsuarioEntity usuario){
         return new UsuarioSaidaDto(
+                usuario.getId(),
                 usuario.getNome(),
                 usuario.getDataNascimento(),
                 usuario.getMatricula(),

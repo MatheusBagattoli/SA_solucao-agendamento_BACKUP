@@ -7,10 +7,13 @@ import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
 import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
 import com.senai.solucao_agendamento_SA.services.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -85,6 +88,13 @@ public class UsuarioController {
         }
     }
 
+
+    //Deletar usuario
+    @DeleteMapping("/usuarioExcluir/{id}")
+    public ResponseEntity<String> excluirUsuario(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        usuarioService.excluirUsuario(id);
+        return  ResponseEntity.ok().body("Excluido");
+    }
 
 
 
