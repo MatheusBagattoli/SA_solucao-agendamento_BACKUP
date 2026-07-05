@@ -58,6 +58,6 @@
 	[x] hora final de agendamento (LocalTime) - Indica a hora de fim de agendamento, evitando que uma reserva ultrapasse as 18h ou seja realizada após este horário.
 
    REGRAS:
-	[ ] 1 - O sistema deverá obrigar a informação da descrição do recurso.
-	[ ] 2 – O sistema deverá obrigar a informação de tipo de recurso.
+	[x] 1 - O sistema deverá obrigar a informação da descrição do recurso.
+	[x] 2 – O sistema deverá obrigar a informação de tipo de recurso.
 

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EspacoEquipamentoRepository extends JpaRepository<EspacoEquipamentoEntity, Long> {
 
-
+    boolean existsByDescricao(String descricao);
 }
