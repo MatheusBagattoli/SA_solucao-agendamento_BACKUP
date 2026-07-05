@@ -39,23 +39,23 @@
 
 
 
-   EspacoEquipamento - (Um recurso é algo que pode ser utilizado ou reservado).
-	[ ] id (Long).
-	[ ] descrição (String) - campo descritivo para armazenar o nome do recurso.
-	[ ] tipo (String).
-	[ ] dias da semana disponivel (ENUM) -campo de seleção com cada dia da semana exemplo: 
-[ ] - segunda-feira 
-[ ] - terça-feira 
-[ ] - quarta-feira 
-[ ] - quinta-feira 
-[ ] - quarta-feira 
-[ ] - sexta-feira 
-[ ] - sábado 
-[ ] - domingo
-	[ ] data inicial de agendamento (LocalDate).
-	[ ] data final de agendamento (LocalDate).
-	[ ] hora inicial de agendamento (LocalTime) - Indica a hora de inicio de reserva, podendo restringir que agendamentos ocorram apenas depois das 8h da manhã.
-	[ ] hora final de agendamento (LocalTime) - Indica a hora de fim de agendamento, evitando que uma reserva ultrapasse as 18h ou seja realizada após este horário.
+   ESPAÇO EQUIPAMENTO
+	[x] id (Long).
+	[x] descrição (String) - campo descritivo para armazenar o nome do recurso.
+	[x] tipo (String).
+	[x] dias da semana disponivel (ENUM) -campo de seleção com cada dia da semana exemplo: 
+[x] - segunda-feira 
+[x] - terça-feira 
+[x] - quarta-feira 
+[x] - quinta-feira 
+[x] - quarta-feira 
+[x] - sexta-feira 
+[x] - sábado 
+[x] - domingo
+	[x] data inicial de agendamento (LocalDate).
+	[x] data final de agendamento (LocalDate).
+	[x] hora inicial de agendamento (LocalTime) - Indica a hora de inicio de reserva, podendo restringir que agendamentos ocorram apenas depois das 8h da manhã.
+	[x] hora final de agendamento (LocalTime) - Indica a hora de fim de agendamento, evitando que uma reserva ultrapasse as 18h ou seja realizada após este horário.
 
    REGRAS:
 	[ ] 1 - O sistema deverá obrigar a informação da descrição do recurso.

@@ -1,4 +1,4 @@
-package com.senai.solucao_agendamento_SA.entitys;
+package com.senai.solucao_agendamento_SA.entities.usuario;
 
 import jakarta.persistence.*;
 

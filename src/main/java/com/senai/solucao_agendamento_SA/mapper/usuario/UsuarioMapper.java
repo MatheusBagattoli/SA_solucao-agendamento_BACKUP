@@ -1,19 +1,19 @@
-package com.senai.solucao_agendamento_SA.mapper;
+package com.senai.solucao_agendamento_SA.mapper.usuario;
 
-import com.senai.solucao_agendamento_SA.dtos.UsuarioAtualizarDto;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
-import com.senai.solucao_agendamento_SA.entitys.UsuarioEntity;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioLoginDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioSaidaDto;
+import com.senai.solucao_agendamento_SA.entities.usuario.UsuarioEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UsuarioMapeamento {
+public class UsuarioMapper {
 
     //No mapper manual mister, o ideal é usar o @Component, para poder injetar no service via construtor
 
     //Converte DTO para Entity
-    public UsuarioEntity DtoparaEntity(UsuarioCadastroDto usuarioDto){
+    public UsuarioEntity dtoparaEntity(UsuarioCadastroDto usuarioDto){
         UsuarioEntity usuario = new UsuarioEntity();
         usuario.setNome(usuarioDto.nome());
         usuario.setDataNascimento(usuarioDto.dataNascimento());
@@ -24,7 +24,7 @@ public class UsuarioMapeamento {
     }
 
     //Converte Entity em Dto
-    public UsuarioSaidaDto EntityparaDto(UsuarioEntity usuario){
+    public UsuarioSaidaDto entityparaDto(UsuarioEntity usuario){
         return new UsuarioSaidaDto(
                 usuario.getId(),
                 usuario.getNome(),
@@ -37,7 +37,7 @@ public class UsuarioMapeamento {
 
 
     //Login
-    public UsuarioEntity DtoparaEntityLogin(UsuarioLogin usuario){
+    public UsuarioEntity dtoparaEntityLogin(UsuarioLoginDto usuario){
         UsuarioEntity usuarioLogin = new UsuarioEntity();
         usuarioLogin.setEmail(usuario.email());
         usuarioLogin.setSenha(usuario.senha());
@@ -47,7 +47,7 @@ public class UsuarioMapeamento {
 
 
     //Atualizando o Usuario
-    public UsuarioAtualizarDto AtualizarUsuario(UsuarioEntity usuario){
+    public UsuarioAtualizarDto atualizarUsuario(UsuarioEntity usuario){
 
         return new UsuarioAtualizarDto(
                 usuario.getMatricula(),

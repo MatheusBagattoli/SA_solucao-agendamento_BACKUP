@@ -1,0 +1,117 @@
+package com.senai.solucao_agendamento_SA.entities.espacoequipamento;
+
+import jakarta.persistence.*;
+
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+@Entity
+@Table(name = "espaco_equipamento")
+public class EspacoEquipamentoEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 100)
+    private String descricao;
+
+    @Column(nullable = false, length = 50)
+    private String tipo;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private DiasSemana DiasSemana;
+
+    @Column(nullable = false)
+    private LocalDate dataInicioAgendamento;
+
+    @Column(nullable = false)
+    private LocalDate dataFimAgendamento;
+
+    @Column(nullable = false)
+    private LocalTime  horaInicioAgendamento;
+
+    @Column(nullable = false)
+    private LocalTime  horaFimAgendamento;
+
+
+    public EspacoEquipamentoEntity() {
+    }
+
+    public EspacoEquipamentoEntity(Long id, String descricao, String tipo, DiasSemana diasDaSemana, LocalDate dataInicioAgendamento, LocalDate dataFimAgendamento, LocalTime horaInicioAgendamento, LocalTime horaFimAgendamento) {
+        this.id = id;
+        this.descricao = descricao;
+        this.tipo = tipo;
+        DiasSemana = diasDaSemana;
+        this.dataInicioAgendamento = dataInicioAgendamento;
+        this.dataFimAgendamento = dataFimAgendamento;
+        this.horaInicioAgendamento = horaInicioAgendamento;
+        this.horaFimAgendamento = horaFimAgendamento;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public DiasSemana getDiasSemana() {
+        return DiasSemana;
+    }
+
+    public void setDiasSemana(DiasSemana diasSemana) {
+        DiasSemana = diasSemana;
+    }
+
+    public LocalDate getDataInicioAgendamento() {
+        return dataInicioAgendamento;
+    }
+
+    public void setDataInicioAgendamento(LocalDate dataInicioAgendamento) {
+        this.dataInicioAgendamento = dataInicioAgendamento;
+    }
+
+    public LocalDate getDataFimAgendamento() {
+        return dataFimAgendamento;
+    }
+
+    public void setDataFimAgendamento(LocalDate dataFimAgendamento) {
+        this.dataFimAgendamento = dataFimAgendamento;
+    }
+
+    public LocalTime getHoraInicioAgendamento() {
+        return horaInicioAgendamento;
+    }
+
+    public void setHoraInicioAgendamento(LocalTime horaInicioAgendamento) {
+        this.horaInicioAgendamento = horaInicioAgendamento;
+    }
+
+    public LocalTime getHoraFimAgendamento() {
+        return horaFimAgendamento;
+    }
+
+    public void setHoraFimAgendamento(LocalTime horaFimAgendamento) {
+        this.horaFimAgendamento = horaFimAgendamento;
+    }
+}

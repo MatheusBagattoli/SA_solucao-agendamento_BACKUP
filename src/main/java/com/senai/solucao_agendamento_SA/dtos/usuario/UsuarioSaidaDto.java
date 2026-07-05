@@ -1,4 +1,4 @@
-package com.senai.solucao_agendamento_SA.dtos;
+package com.senai.solucao_agendamento_SA.dtos.usuario;
 
 import java.time.LocalDate;
 

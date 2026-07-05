@@ -1,11 +1,10 @@
-package com.senai.solucao_agendamento_SA.controllers;
+package com.senai.solucao_agendamento_SA.controllers.usuario;
 
-import com.senai.solucao_agendamento_SA.dtos.UsuarioAtualizarDto;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
-import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
-import com.senai.solucao_agendamento_SA.services.UsuarioService;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioLoginDto;
+import com.senai.solucao_agendamento_SA.mapper.usuario.UsuarioMapper;
+import com.senai.solucao_agendamento_SA.services.usuario.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,16 +16,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
-import java.util.Objects;
-
 @Controller
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-    private final UsuarioMapeamento usuarioMapeamento;
+    private final UsuarioMapper usuarioMapeamento;
 
-    public UsuarioController(UsuarioService usuarioService, UsuarioMapeamento usuarioMapeamento) {
+    public UsuarioController(UsuarioService usuarioService, UsuarioMapper usuarioMapeamento) {
         this.usuarioService = usuarioService;
         this.usuarioMapeamento = usuarioMapeamento;
     }
@@ -34,9 +30,9 @@ public class UsuarioController {
 
     //Realizando login
     @PostMapping("/login")
-    public String realizarLogin(UsuarioLogin login, Model model, RedirectAttributes redirectAttributes){
+    public String realizarLogin(UsuarioLoginDto login, Model model, RedirectAttributes redirectAttributes){
         try {
-            usuarioMapeamento.DtoparaEntityLogin(login);
+            usuarioMapeamento.dtoparaEntityLogin(login);
             usuarioService.realizarLogin(login); // puchou direto o metodo do service de realizarLogin.
 
             redirectAttributes.addFlashAttribute("usuarioLogin", login);

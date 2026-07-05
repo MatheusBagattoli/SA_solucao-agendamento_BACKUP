@@ -1,26 +1,25 @@
-package com.senai.solucao_agendamento_SA.services;
+package com.senai.solucao_agendamento_SA.services.usuario;
 
-import com.senai.solucao_agendamento_SA.dtos.UsuarioAtualizarDto;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioCadastroDto;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioLogin;
-import com.senai.solucao_agendamento_SA.dtos.UsuarioSaidaDto;
-import com.senai.solucao_agendamento_SA.entitys.UsuarioEntity;
-import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
-import com.senai.solucao_agendamento_SA.repositorys.UsuarioRepository;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioLoginDto;
+import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioSaidaDto;
+import com.senai.solucao_agendamento_SA.entities.usuario.UsuarioEntity;
+import com.senai.solucao_agendamento_SA.mapper.usuario.UsuarioMapper;
+import com.senai.solucao_agendamento_SA.repositories.usuario.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
-    private final UsuarioMapeamento usuarioMapeamento;
+    private final UsuarioMapper usuarioMapeamento;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapeamento usuarioMapeamento) {
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapper usuarioMapeamento) {
         this.usuarioRepository = usuarioRepository;
         this.usuarioMapeamento = usuarioMapeamento;
     }
@@ -28,12 +27,12 @@ public class UsuarioService {
 
 
     //Logando usuario
-    public void realizarLogin(UsuarioLogin login){
+    public void realizarLogin(UsuarioLoginDto login){
 
         UsuarioEntity usuarioEntity = usuarioRepository.findByEmailAndSenha(login.email(), login.senha())
                 .orElseThrow(()-> new RuntimeException("Usuário ou senha incoreta!"));
 
-        usuarioMapeamento.EntityparaDto(usuarioEntity);
+        usuarioMapeamento.entityparaDto(usuarioEntity);
     }
 
 
@@ -56,7 +55,7 @@ public class UsuarioService {
             throw new IllegalArgumentException("A data de nascimento não pode ter mais de 500 anos.");
         }
 
-        UsuarioEntity usuarioEntity = usuarioMapeamento.DtoparaEntity(cadastroDto);
+        UsuarioEntity usuarioEntity = usuarioMapeamento.dtoparaEntity(cadastroDto);
         usuarioRepository.save(usuarioEntity);
     }
 
@@ -69,7 +68,7 @@ public class UsuarioService {
         List<UsuarioSaidaDto> listaDeUsuariosDto = new ArrayList<>();
 
         for (UsuarioEntity usuarioEntity : listaDeUsuarios) {
-            listaDeUsuariosDto.add(usuarioMapeamento.EntityparaDto(usuarioEntity));
+            listaDeUsuariosDto.add(usuarioMapeamento.entityparaDto(usuarioEntity));
         }
         return listaDeUsuariosDto;
     }
@@ -81,7 +80,7 @@ public class UsuarioService {
         UsuarioEntity usuario = usuarioRepository.findByMatricula(matricula)
                 .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
 
-        return usuarioMapeamento.AtualizarUsuario(usuario);
+        return usuarioMapeamento.atualizarUsuario(usuario);
     }
 
 
