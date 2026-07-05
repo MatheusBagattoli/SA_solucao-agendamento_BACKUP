@@ -62,7 +62,7 @@ public class UsuarioController {
             return"redirect:/home";
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("erro", e.getMessage());
-            redirectAttributes.addFlashAttribute("erro",cadastroDto); // Mantem os dados digitados
+            redirectAttributes.addFlashAttribute("usuario",cadastroDto); // Mantem os dados digitados
             return "redirect:/cadastrarUsuario";
         }
     }

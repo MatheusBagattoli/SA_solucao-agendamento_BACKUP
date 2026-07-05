@@ -4,7 +4,7 @@
  	e-mail [x]
  	senha [x]
  	matricula [x]
- 	data nascimento [+-] (Falta validar data presente e maior de 18anos)
+ 	data nascimento [x]
 
   Regras:  
 [x] 1 - O sistema deverá garantir a unicidade de usuários através do campo de e-mail. 
@@ -12,7 +12,7 @@
 [x] 3 – A senha deve ter no mínimo 5 caracteres, conter números e letras. 
 [x] 4 – O sistema deverá obrigar que o usuário informe o nome do usuário. 
 [x] 5 - O sistema deverá obrigar que o usuário informe o número de matricula.
-[ ] 6 - O sistema deverá validar a data de nascimento do usuário para restringir que uma data no futuro seja informada ou que contabilize mais de 500 anos. 
+[x] 6 - O sistema deverá validar a data de nascimento do usuário para restringir que uma data no futuro seja informada ou que contabilize mais de 500 anos. 
 
   CRUD:
 [x] Login.

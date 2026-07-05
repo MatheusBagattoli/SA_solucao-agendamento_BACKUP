@@ -76,6 +76,13 @@
 
             <div class="card shadow-sm">
                 <div class="card-body">
+                    <div class="alert alert-danger" th:if="${erro}">
+                        <span th:text="${erro}"></span>
+                    </div>
+
+                    <div class="alert alert-success" th:if="${mensagem}">
+                        <span th:text="${mensagem}"></span>
+                    </div>
                     <form th:action="@{/cadastrarUsuario}" th:object="${usuario}" method="post">
 
                         <div class="mb-3">

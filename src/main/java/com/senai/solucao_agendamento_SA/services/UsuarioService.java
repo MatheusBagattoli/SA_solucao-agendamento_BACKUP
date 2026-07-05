@@ -9,6 +9,7 @@ import com.senai.solucao_agendamento_SA.mapper.UsuarioMapeamento;
 import com.senai.solucao_agendamento_SA.repositorys.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,6 +46,16 @@ public class UsuarioService {
         if(usuarioRepository.existsByMatricula(cadastroDto.matricula())){
             throw new IllegalArgumentException("Matricula ja existente");
         }
+
+        LocalDate hoje = LocalDate.now(); // Obtém a data atual do sistema
+
+        LocalDate dataMinima = hoje.minusYears(500); // Calcula a data mínima permitida (500 anos atrás)
+
+        // Verifica se a data possui mais de 500 anos
+        if (cadastroDto.dataNascimento().isBefore(dataMinima)) {
+            throw new IllegalArgumentException("A data de nascimento não pode ter mais de 500 anos.");
+        }
+
         UsuarioEntity usuarioEntity = usuarioMapeamento.DtoparaEntity(cadastroDto);
         usuarioRepository.save(usuarioEntity);
     }
