@@ -13,3 +13,21 @@ MELHORIAS E CONSERTOS
 	- Retirar a anotação @Component e deixar os metódos de converter static, asim não preciso chamar via construtor quando precisar usar.
 	- (OBS) vou ter bque modificar aonde estou usando essa classe porque estou chamando via construtor, no UsuarioService.
 
+
+ESTUDOS:
+ LocalDate.now()
+-Serve para capturar a data atual do sistema, (ano, mes, e dia) de forma simples, moderna e segura, sem precisar se preucupar com horario ou  fusoso horarios, é ideal para (registrar datas de aniversario, vencimento de boletos ou dia em que uma ação acontece).
+ 1 - Ele consulta o relógio do sistema, ele olha calendario do computador ou servidor onde o código esta rodando.
+ 2 - Descarta horas, ignora completamente os minutos, segundos e milesegundos.
+
+ 3 - Ele Gera um objeto imutavel: Cria uma instancia de LocalDate, contendo apenas  ANO-MES-DIA(no formato ISO-8601: AAAA-MM-DD).
+
+getHour()
+- Serve para pegar apenas a hora de um horário/data-hora.
+- Funciona com: LocalTime e LocalDateTime.
+- Retorna: int (0 a 23).
+
+isBefore()
+- É usado para comparar datas/horários e verificar se um vem antes do outro.
+- Funciona com: LocalDate, LocalTime, LocalDateTime.
+- Retorna: boolean.
