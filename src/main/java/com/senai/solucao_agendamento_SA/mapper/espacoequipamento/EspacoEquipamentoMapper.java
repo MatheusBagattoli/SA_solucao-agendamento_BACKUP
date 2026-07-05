@@ -11,7 +11,7 @@ public class EspacoEquipamentoMapper {
         EspacoEquipamentoEntity entity = new EspacoEquipamentoEntity();
         entity.setDescricao(entradaDto.descricao());
         entity.setTipo(entradaDto.tipo());
-        entity.setDiasSemana(entradaDto.DiasSemana());
+        entity.setDiasSemana(entradaDto.diasSemana());
         entity.setDataInicioAgendamento(entradaDto.dataInicioAgendamento());
         entity.setDataFimAgendamento(entradaDto.dataFimAgendamento());
         entity.setHoraInicioAgendamento(entradaDto.horaInicioAgendamento());

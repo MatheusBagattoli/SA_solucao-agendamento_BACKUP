@@ -44,7 +44,7 @@
                 <a class="navbar-brand" th:href="@{/home}">Inicio</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">Servicos</a>
+                <a class="nav-link text-secondary"  th:href="@{/cadastraEspacoEquipamento}">Espaço/Equipamento</a>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link text-secondary" href="#">agendamentos</a>
@@ -83,9 +83,9 @@
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body text-center">
-                        <h2 class="h5 card-title">Serviços</h2>
-                        <p class="card-text">Agende um serviço.</p>
-                        <a href="#" class="btn btn-outline-primary">Acessar</a>
+                        <h2 class="h5 card-title">Espaço/Equipamento</h2>
+                        <p class="card-text">Cadastre um espaço ou equipamento.</p>
+                        <a  th:href="@{/cadastraEspacoEquipamento}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     <div class="card-body text-center">
                         <h2 class="h5 card-title">Usuarios</h2>
                         <p class="card-text">Visualize os Usuarios cadastrados no sistema.</p>
-                        <a href="#" class="btn btn-outline-primary">Acessar</a>
+                        <a th:href="@{/listaUsuarios}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
             </div>

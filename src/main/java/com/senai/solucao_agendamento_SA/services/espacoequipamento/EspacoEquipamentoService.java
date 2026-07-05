@@ -12,6 +12,9 @@ public class EspacoEquipamentoService {
 
     private EspacoEquipamentoRepository espacoEquipamentoRepository;
 
+    public EspacoEquipamentoService(EspacoEquipamentoRepository espacoEquipamentoRepository) {
+        this.espacoEquipamentoRepository = espacoEquipamentoRepository;
+    }
 
     //Cadastrar
     public void cadastroEspacoEquipamento(EspacoEquipamentoEntradaDto entradaDto) {
@@ -34,7 +37,6 @@ public class EspacoEquipamentoService {
         if (!entradaDto.horaInicioAgendamento().isBefore(entradaDto.horaFimAgendamento())){
             throw new IllegalArgumentException("Horario invalido (08:00 as 18:00)");
         }
-
 
         espacoEquipamentoRepository.save(EspacoEquipamentoMapper.dtoParaEntity(entradaDto));
     }

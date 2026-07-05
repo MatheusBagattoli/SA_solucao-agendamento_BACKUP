@@ -18,7 +18,7 @@ public record EspacoEquipamentoEntradaDto(
         String tipo,
 
         @NotNull(message = "Informe o dia da semana, do agendamento.")
-        DiasSemana DiasSemana,
+        DiasSemana diasSemana,
 
         @NotNull(message = "Informe a data inicial, do agendamento.")
         @FutureOrPresent(message = "A data de início não pode ser anterior à data atual.")
