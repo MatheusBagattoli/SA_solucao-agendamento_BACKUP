@@ -1,0 +1,15 @@
+ESTUDO E IMPLANTAÇÃO
+    [ ] Controle de sessão:
+	-como funciona, como adicionar essa função no projeto da SA ?.
+	-Professor deixou um código de exemplo, estudar oque ele fa.
+
+IDEIAS
+    [ ] Na tela HTML(Quem somos):
+	- Posso colocar informações sobre a nossa pessoa.
+
+MELHORIAS E CONSERTOS
+   [ ] UsuarioMapper
+	- O professor comentou que eu posso fazer os metodos static que é a melhor pratica.
+	- Retirar a anotação @Component e deixar os metódos de converter static, asim não preciso chamar via construtor quando precisar usar.
+	- (OBS) vou ter bque modificar aonde estou usando essa classe porque estou chamando via construtor, no UsuarioService.
+
