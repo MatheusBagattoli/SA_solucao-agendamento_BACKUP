@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class PageEspacoEquipamentoController {
 
@@ -23,5 +25,11 @@ public class PageEspacoEquipamentoController {
         return "cadastraEspacoEquipamento";
     }
 
+    @GetMapping("/listarEspacoequipamento")
+    public String getListaEspacoEquipamento(Model model){
+        List<EspacoEquipamentoEntradaDto> lista = espacoEquipamentoService.listarEspacoEquipamentos();
+        model.addAttribute("espacoequipamento", lista);
+        return "listarEspacoequipamento";
+    }
 
 }

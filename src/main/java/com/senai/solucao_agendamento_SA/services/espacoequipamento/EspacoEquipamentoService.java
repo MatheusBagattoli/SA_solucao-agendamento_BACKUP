@@ -1,11 +1,14 @@
 package com.senai.solucao_agendamento_SA.services.espacoequipamento;
 
 import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.EspacoEquipamentoEntradaDto;
+import com.senai.solucao_agendamento_SA.entities.espacoequipamento.EspacoEquipamentoEntity;
 import com.senai.solucao_agendamento_SA.mapper.espacoequipamento.EspacoEquipamentoMapper;
 import com.senai.solucao_agendamento_SA.repositories.espacoequipamento.EspacoEquipamentoRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class EspacoEquipamentoService {
@@ -42,7 +45,16 @@ public class EspacoEquipamentoService {
     }
 
     //Listar
+    public List<EspacoEquipamentoEntradaDto> listarEspacoEquipamentos(){
+        List<EspacoEquipamentoEntity> lista = espacoEquipamentoRepository.findAll();
 
+        List<EspacoEquipamentoEntradaDto> listaDto = new ArrayList<>();
+
+        for (EspacoEquipamentoEntity entity : lista) {
+            listaDto.add(EspacoEquipamentoMapper.entityParaDto(entity));
+        }
+        return listaDto;
+    }
 
     //Buscar por ID
 
