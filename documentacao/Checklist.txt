@@ -44,14 +44,14 @@
 	[x] descrição (String) - campo descritivo para armazenar o nome do recurso.
 	[x] tipo (String).
 	[x] dias da semana disponivel (ENUM) -campo de seleção com cada dia da semana exemplo: 
-[x] - segunda-feira 
-[x] - terça-feira 
-[x] - quarta-feira 
-[x] - quinta-feira 
-[x] - quarta-feira 
-[x] - sexta-feira 
-[x] - sábado 
-[x] - domingo
+  [x] - segunda-feira 
+  [x] - terça-feira 
+  [x] - quarta-feira 
+  [x] - quinta-feira 
+  [x] - quarta-feira 
+  [x] - sexta-feira 
+  [x] - sábado 
+  [x] - domingo
 	[x] data inicial de agendamento (LocalDate).
 	[x] data final de agendamento (LocalDate).
 	[x] hora inicial de agendamento (LocalTime) - Indica a hora de inicio de reserva, podendo restringir que agendamentos ocorram apenas depois das 8h da manhã.
@@ -61,3 +61,26 @@
 	[x] 1 - O sistema deverá obrigar a informação da descrição do recurso.
 	[x] 2 – O sistema deverá obrigar a informação de tipo de recurso.
 
+
+RESERVAS:
+	[ ] id
+	[ ] colaborador - Identificação do colaborador que realizou a reserva.
+  	[ ] recurso - Identificação do espaço ou equipamento que foi solicitado.
+	[ ] data - campo que indica a data de reserva do espaço ou equipamento.
+	[ ] hora inicial - campo que indica a hora de reserva do espaço ou equipamento.
+	[ ] hora final - campo que indica a hora de reserva do espaço ou equipamento.
+	[ ] cancelamento - campo que indica a data de cancelamento da reserva. (preenchido apenas através da função de cancelar reserva que ficará disponível apenas na tela de atualização de reserva)
+	
+	OBSERVAÇÃO: campo descritivo do cancelamento do espaço ou equipamento (que será solicitado ao acessar a função de cancelamento).
+
+ REGRAS:
+	1 – O campo “colaborador” deve ser obrigatório.
+	2 – O campo “equipamento” ou “espaço” deve ser obrigatório.
+	3 – O campo “data” deve ser obrigatório.
+	4 – O campo “cancelamento” deve armazenar a data de cancelamento e não deve ser preenchido ao realizar um registro de uma reserva nova.
+	5 – O sistema deve criticar um registro de reserva para um código de colaborador sem cadastro.
+	6 – O sistema deve criticar o registro de uma reserva para um código de espaço ou recurso sem cadastro.
+	7 – Na tela de cancelamento o sistema deverá exibir os dados da reserva como ‘somente leitura’ e exibir um botão de ‘confirmar cancelamento’. Quando esta ação foi realizada, o sistema irá apenas atualizar o registro de reserva com a data atual no campo “data de cancelamento” finalizando a reserva e que só pode acontecer 1 dia antes da data agendada.
+	8 - Para cada registro novo, a data de cancelamento deverá ser preenchida como nula ou em branco.
+	9 – O sistema deverá bloquear a atualização de uma reserva já registrada, apenas o cancelamento será possível.
+	10 - O sistema deverá na tela de cancelamento solicitar ao usuário uma descrição do motivo do cancelamento e deve ser informado obrigatoriamente.

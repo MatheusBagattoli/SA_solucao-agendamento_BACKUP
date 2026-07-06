@@ -2,10 +2,24 @@ ESTUDO E IMPLANTAÇÃO
     [ ] Controle de sessão:
 	-como funciona, como adicionar essa função no projeto da SA ?.
 	-Professor deixou um código de exemplo, estudar oque ele fa.
+   
+   [ ] Inovação Técnica:
+	- Dashboard com estatísticas:
+	Na página inicial mostrar:
+	- Quantidade de reservas do dia.
+	- Espaço mais reservado.
+	- Equipamento mais utilizado.
+	- Reservas canceladas.
+	Exemplo:
+	- Reservas hoje: 18
+	- Espaço mais usado: Sala de Reunião
+	- Equipamento mais usado: Projetor
+	- Cancelamentos: 2
 
 IDEIAS
     [ ] Na tela HTML(Quem somos):
 	- Posso colocar informações sobre a nossa pessoa.
+
 
 MELHORIAS E CONSERTOS
    [ ] UsuarioMapper
