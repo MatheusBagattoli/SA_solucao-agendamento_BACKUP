@@ -4,8 +4,12 @@ import com.senai.solucao_agendamento_SA.entities.espacoequipamento.EspacoEquipam
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface EspacoEquipamentoRepository extends JpaRepository<EspacoEquipamentoEntity, Long> {
 
     boolean existsByDescricao(String descricao);
+
+    Optional<EspacoEquipamentoEntity> findById(Long id);
 }

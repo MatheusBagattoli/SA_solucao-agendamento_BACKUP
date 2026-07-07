@@ -1,11 +1,14 @@
 package com.senai.solucao_agendamento_SA.controllers.espacoequipamento;
 
+import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.AtualizarRecurso;
 import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.EspacoEquipamentoEntradaDto;
 import com.senai.solucao_agendamento_SA.entities.espacoequipamento.DiasSemana;
 import com.senai.solucao_agendamento_SA.services.espacoequipamento.EspacoEquipamentoService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -31,5 +34,15 @@ public class PageEspacoEquipamentoController {
         model.addAttribute("espacoequipamento", lista);
         return "listarEspacoequipamento";
     }
+
+
+    @GetMapping("/atualizarRecurso/{id}")
+    public String getAtualizarRecurso(@PathVariable @Valid Long id, Model model){
+        AtualizarRecurso dto = espacoEquipamentoService.buscarRecursoPorId(id);
+
+        model.addAttribute("recurso", dto);
+        return "atualizarRecurso";
+    }
+
 
 }

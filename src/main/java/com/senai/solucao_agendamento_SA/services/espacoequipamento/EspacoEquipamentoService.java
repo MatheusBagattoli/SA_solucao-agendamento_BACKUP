@@ -1,5 +1,6 @@
 package com.senai.solucao_agendamento_SA.services.espacoequipamento;
 
+import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.AtualizarRecurso;
 import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.EspacoEquipamentoEntradaDto;
 import com.senai.solucao_agendamento_SA.entities.espacoequipamento.EspacoEquipamentoEntity;
 import com.senai.solucao_agendamento_SA.mapper.espacoequipamento.EspacoEquipamentoMapper;
@@ -56,10 +57,36 @@ public class EspacoEquipamentoService {
         return listaDto;
     }
 
+
     //Buscar por ID
+    public AtualizarRecurso buscarRecursoPorId(Long id){
+        EspacoEquipamentoEntity recurso = espacoEquipamentoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Recurso não encontrado."));
+
+        return  EspacoEquipamentoMapper.atualizarRecurso(recurso);
+    }
+
 
     //Atualizar
+    public boolean atualizarRecurso(AtualizarRecurso recurso){
+
+        EspacoEquipamentoEntity recurso1 = espacoEquipamentoRepository.findById(recurso.id())
+                .orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
+
+        recurso1.setDescricao(recurso.descricao());
+        recurso1.setTipo(recurso.tipo());
+        recurso1.setDiasSemana(recurso.diasSemana());
+        recurso1.setDataInicioAgendamento(recurso.dataInicioAgendamento());
+        recurso1.setDataFimAgendamento(recurso.dataFimAgendamento());
+        recurso1.setHoraInicioAgendamento(recurso.horaInicioAgendamento());
+        recurso1.setHoraFimAgendamento(recurso.horaFimAgendamento());
+        return true;
+    }
+
 
     //Excluir
+    public void excluirRecurso(Long id){
+        espacoEquipamentoRepository.deleteById(id);
+    }
 
 }

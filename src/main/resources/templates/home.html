@@ -28,9 +28,6 @@
     </div>
 </nav>
 
-
-
-
 <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 
     <div class="offcanvas-header">
@@ -41,24 +38,37 @@
     <div class="offcanvas-body">
         <ul class="nav flex-column">
             <li class="nav-item mb-3">
-                <a class="navbar-brand" th:href="@{/home}">Inicio</a>
+                <a class="nav-link text-secondary" th:href="@{/home}">Inicio</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary"  th:href="@{/cadastraEspacoEquipamento}">Espaço/Equipamento</a>
+                <a class="nav-link text-secondary" th:href="@{/cadastrarUsuario}">Cadastrar Usuario</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">agendamentos</a>
+                <a class="nav-link text-secondary"  th:href="@{/cadastraEspacoEquipamento}">Cdastrar Espaço ou equipamento</a>
             </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-secondary"  th:href="@{/}">Agendar espaço ou equipamento</a>
+            </li>
+            <hr>
+            <p class="card-text">Visualizações</p>
             <li class="nav-item mb-3">
                 <a class="nav-link text-secondary" th:href="@{/listaUsuarios}">Usuarios</a>
             </li>
-            <hr>
-            <p class="card-text">Ajuda e configuração</p>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">Quem somos</a>
+                <a class="nav-link text-secondary" th:href="@{/listarEspacoequipamento}">Espaço e agendamento</a>
             </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-secondary" th:href="@{/}">Agendamentos</a>
+            </li>
+            <hr>
+            <p class="card-text">Informações</p>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-secondary" th:href="@{/}">Sobre a equipe</a>
+            </li>
+
+
             <li class="nav-item">
-                <a class="navbar-brand" th:href="@{/login}">sair</a>
+                <a class="nav-link text-secondary" th:href="@{/login}">sair</a>
             </li>
         </ul>
     </div>
@@ -83,8 +93,18 @@
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body text-center">
-                        <h2 class="h5 card-title">Espaço/Equipamento</h2>
-                        <p class="card-text">Cadastre um espaço ou equipamento.</p>
+                        <h2 class="h5 card-title">Usuario</h2>
+                        <p class="card-text">Cadastre um usuario no sistema.</p>
+                        <a  th:href="@{/cadastrarUsuario}" class="btn btn-outline-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h2 class="h5 card-title">Espaço e Equipamento</h2>
+                        <p class="card-text">Cadastre um espaço ou equipamento no sistema.</p>
                         <a  th:href="@{/cadastraEspacoEquipamento}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
@@ -93,18 +113,8 @@
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body text-center">
-                        <h2 class="h5 card-title">Agendamentos</h2>
-                        <p class="card-text">Visualize seus agendamentos.</p>
-                        <a href="#" class="btn btn-outline-primary">Acessar</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <h2 class="h5 card-title">Planos</h2>
-                        <p class="card-text">Visualize planos mensais e valores.</p>
+                        <h2 class="h5 card-title">Agendar</h2>
+                        <p class="card-text">Agende um espaço ou produto desejado.</p>
                         <a href="#" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
@@ -115,7 +125,7 @@
 
         <div class="row g-4">
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body text-center">
                         <h2 class="h5 card-title">Usuarios</h2>
@@ -125,12 +135,23 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body text-center">
-                        <h2 class="h5 card-title">Quem somos</h2>
+                        <h2 class="h5 card-title">Espaço e equipamento</h2>
                         <p class="card-text">Visualize informações sobre a empresa.</p>
-                        <a href="#" class="btn btn-outline-primary">Acessar</a>
+                        <a th:href="@{/listarEspacoequipamento}" class="btn btn-outline-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h2 class="h5 card-title">Recursos</h2>
+                        <p class="card-text">Visualize Recursos cadastardos.</p>
+                        <a th:href="@{/listarEspacoequipamento}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
             </div>

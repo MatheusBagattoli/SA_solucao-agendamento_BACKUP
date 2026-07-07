@@ -1,0 +1,17 @@
+Falta fazer :
+(horaInicioAgendamento - horaFimAgendamento )
+na tela do HTML de atualizarRecurso, preciso ve como eu coloco hora na div</>
+
+
+
+
+    <div class="mb-3">
+                                <label for="perfil" class="form-label">Perfil do usuário</label>
+                                <select class="form-select" id="perfil" name="perfil" th:field="*{perfil}">
+                                    <option value="">Selecione...</option>
+                                    <option th:each="perfil : ${perfis}"
+                                            th:value="${perfil.id}"
+                                            th:text="${perfil.nome}">
+                                    </option>
+                                </select>
+                            </div>

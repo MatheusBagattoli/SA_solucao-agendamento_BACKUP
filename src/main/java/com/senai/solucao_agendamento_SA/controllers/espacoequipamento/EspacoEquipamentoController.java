@@ -1,5 +1,6 @@
 package com.senai.solucao_agendamento_SA.controllers.espacoequipamento;
 
+import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.AtualizarRecurso;
 import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.EspacoEquipamentoEntradaDto;
 import com.senai.solucao_agendamento_SA.entities.espacoequipamento.DiasSemana;
 import com.senai.solucao_agendamento_SA.services.espacoequipamento.EspacoEquipamentoService;
@@ -38,5 +39,25 @@ public class EspacoEquipamentoController {
             return "redirect:/cadastraEspacoEquipamento";
         }
     }
+
+
+    //Atualizar
+    @PostMapping("/atualizarRecurso")
+    public String atualizarRecurso(@Valid @ModelAttribute("recurso")AtualizarRecurso recursoDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+
+        if(bindingResult.hasErrors()){
+            return  "atualizarRecurso";
+        }
+
+        try{
+            espacoEquipamentoService.atualizarRecurso(recursoDto);
+            redirectAttributes.addFlashAttribute("mensagem", "Recurso atualizado com sucesso!");
+            return "redirect:/atualizarRecurso";
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("erro", e.getMessage());
+            return  "redirect:/atualizarRecurso";
+        }
+    }
+
 
 }

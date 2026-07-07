@@ -1,5 +1,6 @@
 package com.senai.solucao_agendamento_SA.mapper.espacoequipamento;
 
+import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.AtualizarRecurso;
 import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.EspacoEquipamentoEntradaDto;
 import com.senai.solucao_agendamento_SA.entities.espacoequipamento.EspacoEquipamentoEntity;
 
@@ -23,6 +24,21 @@ public class EspacoEquipamentoMapper {
     //Converte Entity em Dto
     public static EspacoEquipamentoEntradaDto entityParaDto(EspacoEquipamentoEntity entity){
         return new EspacoEquipamentoEntradaDto(
+                entity.getDescricao(),
+                entity.getTipo(),
+                entity.getDiasSemana(),
+                entity.getDataInicioAgendamento(),
+                entity.getDataFimAgendamento(),
+                entity.getHoraInicioAgendamento(),
+                entity.getHoraFimAgendamento()
+        );
+    }
+
+
+    //Atualizando o Recurso
+    public static  AtualizarRecurso atualizarRecurso(EspacoEquipamentoEntity entity){
+        return new AtualizarRecurso(
+                entity.getId(),
                 entity.getDescricao(),
                 entity.getTipo(),
                 entity.getDiasSemana(),
