@@ -33,7 +33,7 @@ public class UsuarioController {
     public String realizarLogin(UsuarioLoginDto login, Model model, RedirectAttributes redirectAttributes){
         try {
             usuarioMapeamento.dtoparaEntityLogin(login);
-            usuarioService.realizarLogin(login); // puchou direto o metodo do service de realizarLogin.
+            usuarioService.realizarLogin(login); // puxou direto o metodo do service de realizarLogin.
 
             redirectAttributes.addFlashAttribute("usuarioLogin", login);
             return "redirect:/home";

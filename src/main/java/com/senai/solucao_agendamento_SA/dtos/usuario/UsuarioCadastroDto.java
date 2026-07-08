@@ -25,7 +25,7 @@ public record UsuarioCadastroDto(
 
         //A senha deve ter no mínimo 5 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especia
         @NotBlank(message = "Senha é obrigatoria")
-        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{5,}$",message = "senha deve ter minimo 5 caracteres, umsa letra maiúscula e uma minuscula, um caracter expecial e um numero.")
+        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{5,}$",message = "senha deve ter no mínimo 5 caracteres, uma letra maiúscula e uma minúscula, um caracter especial e um numero.")
         String senha
 
 ) {
