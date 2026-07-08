@@ -1,12 +1,12 @@
-package com.senai.solucao_agendamento_SA.services.usuario;
+package com.senai.solucao_agendamento_SA.services;
 
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioLoginDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioSaidaDto;
-import com.senai.solucao_agendamento_SA.entities.usuario.UsuarioEntity;
-import com.senai.solucao_agendamento_SA.mapper.usuario.UsuarioMapper;
-import com.senai.solucao_agendamento_SA.repositories.usuario.UsuarioRepository;
+import com.senai.solucao_agendamento_SA.entities.UsuarioEntity;
+import com.senai.solucao_agendamento_SA.mapper.UsuarioMapper;
+import com.senai.solucao_agendamento_SA.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

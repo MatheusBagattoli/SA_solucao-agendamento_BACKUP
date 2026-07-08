@@ -1,12 +1,12 @@
-package com.senai.solucao_agendamento_SA.dtos.espacoequipamento;
+package com.senai.solucao_agendamento_SA.dtos.recurso;
 
-import com.senai.solucao_agendamento_SA.entities.espacoequipamento.DiasSemana;
+import com.senai.solucao_agendamento_SA.entities.DiasSemana;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public record EspacoEquipamentoEntradaDto(
+public record RecursoDto(
 
 
         @NotBlank(message = "Descrição é obrigatória.")
@@ -37,8 +37,8 @@ public record EspacoEquipamentoEntradaDto(
 
     //Este metodo pertence ao record, aqui estou criando EspacoEquipamento_EntradaDto vazio, para que eu não tenha que informa no controller estes parametros,
     //assim só pucho este metodo la no controller, evitando repetição
-    public static EspacoEquipamentoEntradaDto parametrosVazios(){
-        return new EspacoEquipamentoEntradaDto(
+    public static RecursoDto parametrosVazios(){
+        return new RecursoDto(
                 "","",null,null,null,null,null
         );
     }

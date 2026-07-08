@@ -15,3 +15,6 @@ na tela do HTML de atualizarRecurso, preciso ve como eu coloco hora na div</>
                                     </option>
                                 </select>
                             </div>
+
+- Comecei a trocar as nomeclaturas porque não éra uma boa pratica a que estava,
+falta olhar as classes e corrigi, e principalmente o HTML, não vai funcionar o sistema se nao trocar.

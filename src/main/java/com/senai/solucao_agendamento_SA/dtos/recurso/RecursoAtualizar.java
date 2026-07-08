@@ -1,6 +1,6 @@
-package com.senai.solucao_agendamento_SA.dtos.espacoequipamento;
+package com.senai.solucao_agendamento_SA.dtos.recurso;
 
-import com.senai.solucao_agendamento_SA.entities.espacoequipamento.DiasSemana;
+import com.senai.solucao_agendamento_SA.entities.DiasSemana;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public record AtualizarRecurso(
+public record RecursoAtualizar(
 
         Long id,
 

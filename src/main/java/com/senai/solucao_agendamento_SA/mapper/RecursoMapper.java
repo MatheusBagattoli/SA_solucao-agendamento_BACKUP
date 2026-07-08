@@ -1,15 +1,15 @@
-package com.senai.solucao_agendamento_SA.mapper.espacoequipamento;
+package com.senai.solucao_agendamento_SA.mapper;
 
-import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.AtualizarRecurso;
-import com.senai.solucao_agendamento_SA.dtos.espacoequipamento.EspacoEquipamentoEntradaDto;
-import com.senai.solucao_agendamento_SA.entities.espacoequipamento.EspacoEquipamentoEntity;
+import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoAtualizar;
+import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoDto;
+import com.senai.solucao_agendamento_SA.entities.RecursoEntity;
 
 
-public class EspacoEquipamentoMapper {
+public class RecursoMapper {
 
     //Converte DTO para Entity
-    public static EspacoEquipamentoEntity dtoParaEntity (EspacoEquipamentoEntradaDto entradaDto){
-        EspacoEquipamentoEntity entity = new EspacoEquipamentoEntity();
+    public static RecursoEntity dtoParaEntity (RecursoDto entradaDto){
+        RecursoEntity entity = new RecursoEntity();
         entity.setDescricao(entradaDto.descricao());
         entity.setTipo(entradaDto.tipo());
         entity.setDiasSemana(entradaDto.diasSemana());
@@ -22,8 +22,8 @@ public class EspacoEquipamentoMapper {
 
 
     //Converte Entity em Dto
-    public static EspacoEquipamentoEntradaDto entityParaDto(EspacoEquipamentoEntity entity){
-        return new EspacoEquipamentoEntradaDto(
+    public static RecursoDto entityParaDto(RecursoEntity entity){
+        return new RecursoDto(
                 entity.getDescricao(),
                 entity.getTipo(),
                 entity.getDiasSemana(),
@@ -36,8 +36,8 @@ public class EspacoEquipamentoMapper {
 
 
     //Atualizando o Recurso
-    public static  AtualizarRecurso atualizarRecurso(EspacoEquipamentoEntity entity){
-        return new AtualizarRecurso(
+    public static RecursoAtualizar atualizarRecurso(RecursoEntity entity){
+        return new RecursoAtualizar(
                 entity.getId(),
                 entity.getDescricao(),
                 entity.getTipo(),

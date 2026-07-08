@@ -1,6 +1,6 @@
-package com.senai.solucao_agendamento_SA.repositories.reserva;
+package com.senai.solucao_agendamento_SA.repositories;
 
-import com.senai.solucao_agendamento_SA.entities.reserva.ReservaEntity;
+import com.senai.solucao_agendamento_SA.entities.ReservaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

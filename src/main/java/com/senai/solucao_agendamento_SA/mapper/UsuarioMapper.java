@@ -1,10 +1,10 @@
-package com.senai.solucao_agendamento_SA.mapper.usuario;
+package com.senai.solucao_agendamento_SA.mapper;
 
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioLoginDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioSaidaDto;
-import com.senai.solucao_agendamento_SA.entities.usuario.UsuarioEntity;
+import com.senai.solucao_agendamento_SA.entities.UsuarioEntity;
 import org.springframework.stereotype.Component;
 
 @Component

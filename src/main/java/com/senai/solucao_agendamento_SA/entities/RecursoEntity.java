@@ -1,4 +1,4 @@
-package com.senai.solucao_agendamento_SA.entities.espacoequipamento;
+package com.senai.solucao_agendamento_SA.entities;
 
 import jakarta.persistence.*;
 
@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "espaco_equipamento")
-public class EspacoEquipamentoEntity {
+@Table(name = "recurso")
+public class RecursoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,10 +37,10 @@ public class EspacoEquipamentoEntity {
     private LocalTime  horaFimAgendamento;
 
 
-    public EspacoEquipamentoEntity() {
+    public RecursoEntity() {
     }
 
-    public EspacoEquipamentoEntity(Long id, String descricao, String tipo, DiasSemana diasDaSemana, LocalDate dataInicioAgendamento, LocalDate dataFimAgendamento, LocalTime horaInicioAgendamento, LocalTime horaFimAgendamento) {
+    public RecursoEntity(Long id, String descricao, String tipo, DiasSemana diasDaSemana, LocalDate dataInicioAgendamento, LocalDate dataFimAgendamento, LocalTime horaInicioAgendamento, LocalTime horaFimAgendamento) {
         this.id = id;
         this.descricao = descricao;
         this.tipo = tipo;

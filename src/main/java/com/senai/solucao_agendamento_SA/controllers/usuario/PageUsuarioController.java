@@ -4,7 +4,7 @@ package com.senai.solucao_agendamento_SA.controllers.usuario;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioSaidaDto;
-import com.senai.solucao_agendamento_SA.services.usuario.UsuarioService;
+import com.senai.solucao_agendamento_SA.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

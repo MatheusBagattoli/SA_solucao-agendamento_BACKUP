@@ -1,6 +1,6 @@
-package com.senai.solucao_agendamento_SA.repositories.usuario;
+package com.senai.solucao_agendamento_SA.repositories;
 
-import com.senai.solucao_agendamento_SA.entities.usuario.UsuarioEntity;
+import com.senai.solucao_agendamento_SA.entities.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
