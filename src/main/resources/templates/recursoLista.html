@@ -44,7 +44,7 @@
                 <a class="nav-link text-secondary" th:href="@{/cadastrarUsuario}">Cadastrar Usuario</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary"  th:href="@{/cadastraEspacoEquipamento}">Cdastrar Espaço ou equipamento</a>
+                <a class="nav-link text-secondary"  th:href="@{/recursoCadastra}">Cdastrar Espaço ou equipamento</a>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link text-secondary"  th:href="@{/}">Agendar espaço ou equipamento</a>
@@ -55,7 +55,7 @@
                 <a class="nav-link text-secondary" th:href="@{/listaUsuarios}">Usuarios</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" th:href="@{/listarEspacoequipamento}">Espaço e agendamento</a>
+                <a class="nav-link text-secondary" th:href="@{/recurtoLista}">Espaço e agendamento</a>
             </li>
             <li class="nav-item">
                 <a class="navbar-brand" th:href="@{/login}">sair</a>
@@ -63,9 +63,6 @@
         </ul>
     </div>
 </div>
-
-
-
 
 
 <main class="container py-4">
@@ -93,14 +90,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="espacoequipamento: ${espacoequipamento}">
-                            <td th:text="${espacoequipamento.descricao}"></td>
-                            <td th:text="${espacoequipamento.tipo}"></td>
-                            <td th:text="${espacoequipamento.diasSemana}"></td>
-                            <td th:text="${espacoequipamento.dataInicioAgendamento}"></td>
-                            <td th:text="${espacoequipamento.dataFimAgendamento}"></td>
-                            <td th:text="${espacoequipamento.horaInicioAgendamento}"></td>
-                            <td th:text="${espacoequipamento.horaFimAgendamento}"></td>
+                        <tr th:each="recurso: ${recursos}">
+                            <td th:text="${recurso.descricao}"></td>
+                            <td th:text="${recurso.tipo}"></td>
+                            <td th:text="${recurso.diasSemana}"></td>
+                            <td th:text="${recurso.dataInicioAgendamento}"></td>
+                            <td th:text="${recurso.dataFimAgendamento}"></td>
+                            <td th:text="${recurso.horaInicioAgendamento}"></td>
+                            <td th:text="${recurso.horaFimAgendamento}"></td>
                         </tr>
                         </tbody>
                     </table>

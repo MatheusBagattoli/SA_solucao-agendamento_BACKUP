@@ -84,7 +84,7 @@ public class RecursoService {
 
 
     //Excluir
-    public void excluirRecurso(Long id){
+    public void RecursoExcluir(Long id){
         recursoRepository.deleteById(id);
     }
 

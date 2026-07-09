@@ -38,24 +38,37 @@
     <div class="offcanvas-body">
         <ul class="nav flex-column">
             <li class="nav-item mb-3">
-                <a class="navbar-brand" th:href="@{/home}">Inicio</a>
+                <a class="nav-link text-secondary" th:href="@{/home}">Inicio</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary"  th:href="@{/cadastraEspacoEquipamento}">Espaço/Equipamento</a>
+                <a class="nav-link text-secondary" th:href="@{/cadastrarUsuario}">Cadastrar Usuario</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">agendamentos</a>
+                <a class="nav-link text-secondary"  th:href="@{/recursoCadastra}">Cadastrar recurso</a>
             </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-secondary"  th:href="@{/}">Agendar espaço ou equipamento</a>
+            </li>
+            <hr>
+            <p class="card-text">Visualizações</p>
             <li class="nav-item mb-3">
                 <a class="nav-link text-secondary" th:href="@{/listaUsuarios}">Usuarios</a>
             </li>
-            <hr>
-            <p class="card-text">Ajuda e configuração</p>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">Quem somos</a>
+                <a class="nav-link text-secondary" th:href="@{/recursoLista}">Espaço e agendamento</a>
             </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-secondary" th:href="@{/}">Agendamentos</a>
+            </li>
+            <hr>
+            <p class="card-text">Informações</p>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-secondary" th:href="@{/}">Sobre a equipe</a>
+            </li>
+
+
             <li class="nav-item">
-                <a class="navbar-brand" th:href="@{/login}">sair</a>
+                <a class="nav-link text-secondary" th:href="@{/login}">sair</a>
             </li>
         </ul>
     </div>
@@ -82,7 +95,7 @@
                     <div class="alert alert-success" th:if="${mensagem}">
                         <span th:text="${mensagem}"></span>
                     </div>
-                    <form th:action="@{/cadastrarEspacoEquipamento}" th:object="${espacoequipamento}" method="post">
+                    <form th:action="@{/recursoCadastra}" th:object="${recurso}" method="post">
 
                         <div class="mb-3">
                             <label for="descricao" class="form-label">Descrição/Nome</label>

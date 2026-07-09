@@ -11,7 +11,7 @@ document.querySelectorAll('.excluir').forEach(function(button) {
             //console.log("id=" + id);
 
             // Realize a chamada AJAX para excluir o recurso
-            fetch(`/usuarioExcluir/${id}`, {
+            fetch(`/recursoExcluir/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -20,14 +20,14 @@ document.querySelectorAll('.excluir').forEach(function(button) {
             .then(response => {
                 if (response.ok) {
                     // A exclusão foi bem-sucedida
-                    console.log('Usuário excluído com sucesso.');
+                    console.log('Recurso excluído com sucesso.');
 
                     // Remove a linha da tabela após a exclusão
                     linha.remove();
                 } else {
                     // A solicitação DELETE falhou
-                    console.error('Erro ao excluir usuário.');
-                    alert('Erro ao excluir usuário');
+                    console.error('Erro ao excluir Recurso.');
+                    alert('Erro ao excluir Recurso');
                 }
             })
             .catch(error => {

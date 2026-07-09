@@ -44,7 +44,7 @@
         <a class="nav-link text-secondary" th:href="@{/cadastrarUsuario}">Cadastrar Usuario</a>
       </li>
       <li class="nav-item mb-3">
-        <a class="nav-link text-secondary"  th:href="@{/cadastraEspacoEquipamento}">Cdastrar Espaço ou equipamento</a>
+        <a class="nav-link text-secondary"  th:href="@{/recursoCadastra}">Cadastrar recurso</a>
       </li>
       <li class="nav-item mb-3">
         <a class="nav-link text-secondary"  th:href="@{/}">Agendar espaço ou equipamento</a>
@@ -55,7 +55,7 @@
         <a class="nav-link text-secondary" th:href="@{/listaUsuarios}">Usuarios</a>
       </li>
       <li class="nav-item mb-3">
-        <a class="nav-link text-secondary" th:href="@{/listarEspacoequipamento}">Espaço e agendamento</a>
+        <a class="nav-link text-secondary" th:href="@{/recursoLista}">Espaço e agendamento</a>
       </li>
       <li class="nav-item mb-3">
         <a class="nav-link text-secondary" th:href="@{/}">Agendamentos</a>
@@ -87,7 +87,7 @@
 
       <div class="card shadow-sm">
         <div class="card-body">
-            <form th:action="@{/atualizarRecurso}" th:object="${recurso}" method="post">
+            <form th:action="@{/recursoAtualizar}" th:object="${recurso}" method="post">
             <input type="hidden" th:field="*{id}">
 
             <div class="mb-3">
@@ -135,11 +135,8 @@
 
 
 
-
-
-
             <div class="d-flex justify-content-end gap-2">
-              <a class="btn btn-outline-secondary" th:href="@{/atualizarRecurso}">Cancelar</a>
+              <a class="btn btn-outline-secondary" th:href="@{/recursoAtualizar}">Cancelar</a>
               <button type="submit" class="btn btn-primary">Atualizar</button>
             </div>
           </form>
