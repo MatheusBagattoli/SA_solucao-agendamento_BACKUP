@@ -110,18 +110,17 @@
                         </div>
 
                         <div class="mb-3">
-                        <label for="diasSemana" class="form-label">Dias da semana</label>
-                        <select class="form-select" id="diasSemana" th:field="*{diasSemana}" required>
-                            <option value="">Selecione</option>
-                            <option th:each="dia : ${diasSemana}"
-                                    th:value="${dia}"
-                                    th:text="${dia}">
-                            </option>
-                        </select>
+                            <label class="form-label d-block">Dia da semana</label>
+                            <div class="form-check form-check-inline" th:each="dia : ${diaSemana}">
+                                <input class="form-check-input" type="checkbox"
+                                       name="diaSemana" th:value="${dia}" th:id="${dia}">
+                                <label class="form-check-label" th:for="${dia}" th:text="${dia}"></label>
+                            </div>
+
 
                         <div class="text-danger small mt-1"
-                             th:if="${#fields.hasErrors('diasSemana')}"
-                             th:errors="*{diasSemana}">
+                             th:if="${#fields.hasErrors('diaSemana')}"
+                             th:errors="*{diaSemana}">
                         </div>
                     </div>
 

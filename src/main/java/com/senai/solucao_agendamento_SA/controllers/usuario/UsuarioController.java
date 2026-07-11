@@ -45,11 +45,11 @@ public class UsuarioController {
 
 
     //Cadastro usuario
-    @PostMapping("/usuarioCadastra")
+    @PostMapping("/usuarioCadastro")
     public String cadastrarUsuario(@Valid @ModelAttribute("usuario") UsuarioCadastroDto cadastroDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
 
         if(bindingResult.hasErrors()){
-            return "usuarioCadastra";
+            return "usuarioCadastro";
         }
 
         try {
@@ -59,7 +59,7 @@ public class UsuarioController {
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("erro", e.getMessage());
             redirectAttributes.addFlashAttribute("usuario",cadastroDto); // Mantem os dados digitados
-            return "redirect:/usuarioCadastra";
+            return "redirect:/usuarioCadastro";
         }
     }
 

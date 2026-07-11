@@ -2,7 +2,7 @@ package com.senai.solucao_agendamento_SA.controllers.recurso;
 
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoAtualizar;
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoDto;
-import com.senai.solucao_agendamento_SA.entities.DiasSemana;
+import com.senai.solucao_agendamento_SA.entities.DiaSemana;
 import com.senai.solucao_agendamento_SA.services.RecursoService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class PageRecursoController {
     @GetMapping("/recursoCadastra")
     public String getCadastraEspacoequipamento(Model model){
         model.addAttribute("recurso", RecursoDto.parametrosVazios()); // chamei o metodo vazio da classe recor EspacoEquipamentoEntradaDto.
-        model.addAttribute("diasSemana", DiasSemana.values()); //Gera as opções automaticamente pelo enum.
+        model.addAttribute("diaSemana", DiaSemana.values()); //Gera as opções automaticamente pelo enum.
         return "recursoCadastra";
     }
 
@@ -41,6 +41,7 @@ public class PageRecursoController {
         RecursoAtualizar dto = recursoServicee.buscarRecursoPorId(id);
 
         model.addAttribute("recurso", dto);
+        model.addAttribute("diaSemana", DiaSemana.values());
         return "recursoAtualizar";
     }
 

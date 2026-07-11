@@ -1,10 +1,11 @@
 package com.senai.solucao_agendamento_SA.dtos.recurso;
 
-import com.senai.solucao_agendamento_SA.entities.DiasSemana;
+import com.senai.solucao_agendamento_SA.entities.DiaSemana;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public record RecursoDto(
 
@@ -18,7 +19,7 @@ public record RecursoDto(
         String tipo,
 
         @NotNull(message = "Informe o dia da semana, do agendamento.")
-        DiasSemana diasSemana,
+        List<DiaSemana> diaSemana,
 
         @NotNull(message = "Informe a data inicial, do agendamento.")
         @FutureOrPresent(message = "A data de início não pode ser anterior à data atual.")

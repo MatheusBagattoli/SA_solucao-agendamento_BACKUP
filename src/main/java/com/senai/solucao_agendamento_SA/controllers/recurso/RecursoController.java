@@ -2,7 +2,7 @@ package com.senai.solucao_agendamento_SA.controllers.recurso;
 
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoAtualizar;
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoDto;
-import com.senai.solucao_agendamento_SA.entities.DiasSemana;
+import com.senai.solucao_agendamento_SA.entities.DiaSemana;
 import com.senai.solucao_agendamento_SA.services.RecursoService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -21,12 +21,12 @@ public class RecursoController {
         this.recursoService = recursoService;
     }
 
-    //Cadastro Espaço/Equipamento
+    //Cadastro Recurso
     @PostMapping("/recursoCadastra")
     public String cadastraRecurso(@Valid @ModelAttribute("recurso") RecursoDto entradaDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
 
         if(bindingResult.hasErrors()){
-            model.addAttribute("diasSemana", DiasSemana.values()); // Adicionei porque toda vez que acontecia um erro
+            model.addAttribute("diaSemana", DiaSemana.values()); // Adicionei porque toda vez que acontecia um erro
             return "recursoCadastra";                                 //e retornava a pagina novamente nao aparecia os dias da semana para escolher novamente.
         }
         try {
@@ -43,7 +43,7 @@ public class RecursoController {
 
     //Atualizar
     @PostMapping("/recursoAtualizar")
-    public String atualizarRecurso(@Valid @ModelAttribute("recurso") RecursoAtualizar recursoDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String atualizarRecurso(@Valid @ModelAttribute("recurso") RecursoAtualizar recursoDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
 
         if(bindingResult.hasErrors()){
             return  "recursoAtualizar";
@@ -55,6 +55,7 @@ public class RecursoController {
             return "redirect:/recursoAtualizar";
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("erro", e.getMessage());
+            model.addAttribute("diaSemana", DiaSemana.values());
             return  "redirect:/recursoAtualizar";
         }
     }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "recurso")
@@ -20,9 +21,10 @@ public class RecursoEntity {
     @Column(nullable = false, length = 50)
     private String tipo;
 
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private DiasSemana DiasSemana;
+    @CollectionTable(name = "dia_semana", joinColumns = @JoinColumn(name = "recurso_id"))
+    @Column(name = "dia_semana", nullable = false)
+    private List<DiaSemana> diaSemana;
 
     @Column(nullable = false)
     private LocalDate dataInicioAgendamento;
@@ -40,11 +42,11 @@ public class RecursoEntity {
     public RecursoEntity() {
     }
 
-    public RecursoEntity(Long id, String descricao, String tipo, DiasSemana diasDaSemana, LocalDate dataInicioAgendamento, LocalDate dataFimAgendamento, LocalTime horaInicioAgendamento, LocalTime horaFimAgendamento) {
+    public RecursoEntity(Long id, String descricao, String tipo, List<DiaSemana> diasSemana, LocalDate dataInicioAgendamento, LocalDate dataFimAgendamento, LocalTime horaInicioAgendamento, LocalTime horaFimAgendamento) {
         this.id = id;
         this.descricao = descricao;
         this.tipo = tipo;
-        DiasSemana = diasDaSemana;
+        this.diaSemana = diasSemana;
         this.dataInicioAgendamento = dataInicioAgendamento;
         this.dataFimAgendamento = dataFimAgendamento;
         this.horaInicioAgendamento = horaInicioAgendamento;
@@ -75,12 +77,12 @@ public class RecursoEntity {
         this.tipo = tipo;
     }
 
-    public DiasSemana getDiasSemana() {
-        return DiasSemana;
+    public List<DiaSemana> getDiaSemana() {
+        return diaSemana;
     }
 
-    public void setDiasSemana(DiasSemana diasSemana) {
-        DiasSemana = diasSemana;
+    public void setDiaSemana(List<DiaSemana> diaSemana) {
+        this.diaSemana = diaSemana;
     }
 
     public LocalDate getDataInicioAgendamento() {
@@ -114,4 +116,6 @@ public class RecursoEntity {
     public void setHoraFimAgendamento(LocalTime horaFimAgendamento) {
         this.horaFimAgendamento = horaFimAgendamento;
     }
+
+
 }

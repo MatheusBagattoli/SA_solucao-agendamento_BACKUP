@@ -12,7 +12,7 @@ public class RecursoMapper {
         RecursoEntity entity = new RecursoEntity();
         entity.setDescricao(entradaDto.descricao());
         entity.setTipo(entradaDto.tipo());
-        entity.setDiasSemana(entradaDto.diasSemana());
+        entity.setDiaSemana(entradaDto.diaSemana());
         entity.setDataInicioAgendamento(entradaDto.dataInicioAgendamento());
         entity.setDataFimAgendamento(entradaDto.dataFimAgendamento());
         entity.setHoraInicioAgendamento(entradaDto.horaInicioAgendamento());
@@ -26,7 +26,7 @@ public class RecursoMapper {
         return new RecursoDto(
                 entity.getDescricao(),
                 entity.getTipo(),
-                entity.getDiasSemana(),
+                entity.getDiaSemana(),
                 entity.getDataInicioAgendamento(),
                 entity.getDataFimAgendamento(),
                 entity.getHoraInicioAgendamento(),
@@ -41,7 +41,7 @@ public class RecursoMapper {
                 entity.getId(),
                 entity.getDescricao(),
                 entity.getTipo(),
-                entity.getDiasSemana(),
+                entity.getDiaSemana(),
                 entity.getDataInicioAgendamento(),
                 entity.getDataFimAgendamento(),
                 entity.getHoraInicioAgendamento(),

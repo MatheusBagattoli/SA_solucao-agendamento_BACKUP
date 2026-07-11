@@ -74,7 +74,7 @@ public class RecursoService {
 
         recurso1.setDescricao(recurso.descricao());
         recurso1.setTipo(recurso.tipo());
-        recurso1.setDiasSemana(recurso.diasSemana());
+        recurso1.setDiaSemana(recurso.diaSemana());
         recurso1.setDataInicioAgendamento(recurso.dataInicioAgendamento());
         recurso1.setDataFimAgendamento(recurso.dataFimAgendamento());
         recurso1.setHoraInicioAgendamento(recurso.horaInicioAgendamento());
