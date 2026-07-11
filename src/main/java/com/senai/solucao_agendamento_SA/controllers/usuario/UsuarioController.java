@@ -45,11 +45,11 @@ public class UsuarioController {
 
 
     //Cadastro usuario
-    @PostMapping("/cadastrarUsuario")
+    @PostMapping("/usuarioCadastra")
     public String cadastrarUsuario(@Valid @ModelAttribute("usuario") UsuarioCadastroDto cadastroDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
 
         if(bindingResult.hasErrors()){
-            return "cadastrarUsuario";
+            return "usuarioCadastra";
         }
 
         try {
@@ -59,28 +59,28 @@ public class UsuarioController {
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("erro", e.getMessage());
             redirectAttributes.addFlashAttribute("usuario",cadastroDto); // Mantem os dados digitados
-            return "redirect:/cadastrarUsuario";
+            return "redirect:/usuarioCadastra";
         }
     }
 
     //Atualizar Usuario
-    @PostMapping("/atualizarUsuario")
+    @PostMapping("/usuarioAtualizar")
     public String atualizarUsuario(@Valid @ModelAttribute("usuario") UsuarioAtualizarDto dto, BindingResult result, RedirectAttributes redirectAttributes){
 
         if(result.hasErrors()){
-            return "atualizarUsuario";
+            return "usuarioAtualizar";
         }
 
         try {
             usuarioService.atualizarUsuario(dto);
 
             redirectAttributes.addFlashAttribute("mensagem", "Usuário atualizado com sucesso!");
-            return "redirect:/listaUsuarios";
+            return "redirect:/usuarioLista";
 
         } catch (Exception e) {
 
             redirectAttributes.addFlashAttribute("erro", e.getMessage());
-            return "redirect:/atualizarUsuario/" + dto.getMatricula();
+            return "redirect:/usuarioAtualizar/" + dto.getMatricula();
         }
     }
 

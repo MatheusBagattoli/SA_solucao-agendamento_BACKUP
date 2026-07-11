@@ -68,7 +68,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h1 class="h3 mb-1">Cadastrar-se</h1>
-                    <p class="text-secondary mb-0">Preencha os dados para criar seu cadastro.</p>
+                    <p class="text-secondary mb-0">Preencha os dados para criar o seu cadastro.</p>
                 </div>
             </div>
 
@@ -85,33 +85,40 @@
 
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Digite o nome completo" required>
+                            <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Informe o nome completo" required>
                             <div class="text-danger small mt-1" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no nome</div>
                         </div>
 
                         <div class="mb-3">
                             <label for="dataNascimento" class="form-label">Data nascimento</label>
-                            <input type="date" class="form-control" id="dataNascimento" th:field="*{dataNascimento}" placeholder="Digite Data de nascimento" required>
+                            <input type="date" class="form-control" id="dataNascimento" th:field="*{dataNascimento}" placeholder="DInforme sua data de nascimento." required>
                             <div class="text-danger small mt-1" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro no e-mail</div>
                         </div>
 
                         <div class="mb-3">
                             <label for="matricula" class="form-label">Matricula</label>
-                            <input type="text" class="form-control" id="matricula" th:field="*{matricula}" placeholder="Digite o numero da matricula" required>
+                            <input type="text" class="form-control" id="matricula" th:field="*{matricula}" placeholder="Informe o número da matricula." required>
                             <div class="text-danger small mt-1" th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}">Erro na matricula</div>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Digite o e-mail" required>
+                            <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Informe seu E-mail." required>
                             <div class="text-danger small mt-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Erro no e-mail</div>
                         </div>
 
                         <div class="mb-3">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" th:field="*{senha}" placeholder="Digite a senha" required>
+                            <input type="password" class="form-control" id="senha" th:field="*{senha}" placeholder="Informe a senha desejada." required>
                             <div class="text-danger small mt-1" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}">Erro na senha</div>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="confirmaSenha" class="form-label">Confirme a senha</label>
+                            <input type="password" class="form-control" id="confirmaSenha" th:field="*{confirmaSenha}" placeholder="Confirme a senha desejada." required>
+                            <div class="text-danger small mt-1" th:if="${#fields.hasErrors('confirmaSenha')}" th:errors="*{confirmaSenha}">Erro na confirmação de senha</div>
+                        </div>
+
 
                         <div class="d-flex justify-content-end gap-2">
                             <a class="btn btn-outline-secondary" th:href="@{/login}">Cancelar</a>

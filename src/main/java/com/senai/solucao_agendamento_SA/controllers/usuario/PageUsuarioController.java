@@ -38,27 +38,27 @@ public class PageUsuarioController {
         return "home";
     }
 
-    @GetMapping("/cadastrarUsuario")
-    public String getCadastrarUsuario(Model model){
+    @GetMapping("/usuarioCadastro")
+    public String getUsuarioCadastro(Model model){
         model.addAttribute("usuario", UsuarioCadastroDto.parametrosVazio()); // aqui eu chamei o metodo parametrosVazio da classe UsuarioCadastroDto para nao ter que fazer manual.
-        return "cadastrarUsuario";
+        return "usuarioCadastro";
     }
 
-    @GetMapping("/listaUsuarios")
-    public String getListaUsuarios(Model model){
+    @GetMapping("/usuarioLista")
+    public String getUsuarioLista(Model model){
         List<UsuarioSaidaDto> listaUsuarios = usuarioService.listaDeUsuarios();
         model.addAttribute("usuarios", listaUsuarios);
-        return "listaUsuarios";
+        return "usuarioLista";
     }
 
-    @GetMapping("/atualizarUsuario/{matricula}")
-    public String getAtualizarUsuario(@PathVariable @Valid String matricula, Model model){
+    @GetMapping("/usuarioAtualizar/{matricula}")
+    public String getUsuarioAtualizar(@PathVariable @Valid String matricula, Model model){
 
         UsuarioAtualizarDto dto = usuarioService.obterUsuarioParaAtualizar(matricula);
 
         model.addAttribute("usuario", dto);
 
-        return "atualizarUsuario";
+        return "usuarioAtualizar";
     }
 
 

@@ -45,6 +45,9 @@ public class UsuarioService {
         if(usuarioRepository.existsByMatricula(cadastroDto.matricula())){
             throw new IllegalArgumentException("Matricula ja existente");
         }
+        if (!cadastroDto.senha().equals(cadastroDto.confirmaSenha())){
+            throw new IllegalArgumentException("Senha incorreta");
+        }
 
         LocalDate hoje = LocalDate.now(); // Obtém a data atual do sistema
 
