@@ -1,14 +1,19 @@
 package com.senai.solucao_agendamento_SA.services;
 
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoAtualizar;
+import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoDisponibilidadeDto;
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoDto;
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoSelecaoDto;
+import com.senai.solucao_agendamento_SA.entities.DiaSemana;
 import com.senai.solucao_agendamento_SA.entities.RecursoEntity;
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoListaDto;
 import com.senai.solucao_agendamento_SA.mapper.RecursoMapper;
 import com.senai.solucao_agendamento_SA.repositories.RecursoRepository;
+import com.senai.solucao_agendamento_SA.repositories.ReservaRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +21,11 @@ import java.util.List;
 public class RecursoService {
 
     private RecursoRepository recursoRepository;
+    private final ReservaRepository reservaRepository;
 
-    public RecursoService(RecursoRepository recursoRepository) {
+    public RecursoService(RecursoRepository recursoRepository, ReservaRepository reservaRepository) {
         this.recursoRepository= recursoRepository;
+        this.reservaRepository = reservaRepository;
     }
 
     //Cadastrar
@@ -117,8 +124,61 @@ public class RecursoService {
 
 
     //Excluir
-    public void RecursoExcluir(Long id){
+    public boolean RecursoExcluir(Long id){
+        if (!recursoRepository.existsById(id)) {
+            return false;
+        }
         recursoRepository.deleteById(id);
+        return true;
+    }
+
+    //Indicador de disponibilidade: para uma data e horario escolhidos, verifica se cada recurso esta disponivel
+    //considerando periodo de agendamento, horario de funcionamento, dia da semana e reservas ja existentes.
+    public List<RecursoDisponibilidadeDto> verificarDisponibilidade(LocalDate data, LocalTime horaInicio, LocalTime horaFim) {
+        List<RecursoEntity> lista = recursoRepository.findAll();
+        List<RecursoDisponibilidadeDto> resultado = new ArrayList<>();
+
+        for (RecursoEntity recurso : lista) {
+            boolean disponivel = true;
+            String motivo = null;
+
+            if (data.isBefore(recurso.getDataInicioAgendamento()) || data.isAfter(recurso.getDataFimAgendamento())) {
+                disponivel = false;
+                motivo = "Fora do periodo de agendamento deste recurso.";
+            } else if (horaInicio.isBefore(recurso.getHoraInicioAgendamento()) || horaFim.isAfter(recurso.getHoraFimAgendamento())) {
+                disponivel = false;
+                motivo = "Fora do horario de funcionamento deste recurso.";
+            } else if (!recurso.getDiaSemana().contains(DiaSemana.deLocalDate(data))) {
+                disponivel = false;
+                motivo = "Recurso nao funciona neste dia da semana.";
+            } else {
+                boolean existeConflito = reservaRepository
+                        .findByRecurso_IdAndDataAndDataCancelamentoIsNull(recurso.getId(), data)
+                        .stream()
+                        .anyMatch(reservaExistente ->
+                                horaInicio.isBefore(reservaExistente.getHoraFinal()) &&
+                                        horaFim.isAfter(reservaExistente.getHoraInicial())
+                        );
+                if (existeConflito) {
+                    disponivel = false;
+                    motivo = "Ja existe uma reserva neste horario.";
+                }
+            }
+
+            resultado.add(new RecursoDisponibilidadeDto(
+                    recurso.getId(),
+                    recurso.getDescricao(),
+                    recurso.getTipo(),
+                    recurso.getDiaSemana(),
+                    recurso.getDataInicioAgendamento(),
+                    recurso.getDataFimAgendamento(),
+                    recurso.getHoraInicioAgendamento(),
+                    recurso.getHoraFimAgendamento(),
+                    disponivel,
+                    motivo
+            ));
+        }
+        return resultado;
     }
 
 }

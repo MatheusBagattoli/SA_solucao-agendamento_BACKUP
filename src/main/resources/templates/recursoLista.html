@@ -17,7 +17,7 @@
         <span style="margin-right: 20px"></span>
 
 
-        <div class="collapse navbar-collapse " id="menuPrincipal">
+        <div class="collapse navbar-collapse ">
             <ul class="navbar-nav ms-auto">
                 <a class="navbar-brand" th:href="@{/home}">Zheiri Serviços</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
@@ -73,6 +73,32 @@
         </div>
 
 
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h2 class="h6 mb-3">Verificar disponibilidade</h2>
+                <form method="get" th:action="@{/recursoLista}" class="row g-3 align-items-end">
+                    <div class="col-auto">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="data" name="data" th:value="${dataConsultada}">
+                    </div>
+                    <div class="col-auto">
+                        <label for="horaInicio" class="form-label">Hora inicial</label>
+                        <input type="time" class="form-control" id="horaInicio" name="horaInicio" th:value="${horaInicioConsultada}">
+                    </div>
+                    <div class="col-auto">
+                        <label for="horaFim" class="form-label">Hora final</label>
+                        <input type="time" class="form-control" id="horaFim" name="horaFim" th:value="${horaFimConsultada}">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Verificar disponibilidade</button>
+                    </div>
+                    <div class="col-auto" th:if="${verificando}">
+                        <a th:href="@{/recursoLista}" class="btn btn-outline-secondary">Limpar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="card shadow-sm">
             <div class="card-body">
                 <div class="table-responsive">
@@ -86,6 +112,7 @@
                             <th scope="col">Data de final</th>
                             <th scope="col">Horario de inicio</th>
                             <th scope="col">Horario do fim</th>
+                            <th scope="col" th:if="${verificando}">Disponibilidade</th>
                             <th scope="col" class="text-end">...</th>
                         </tr>
                         </thead>
@@ -98,6 +125,10 @@
                             <td th:text="${recurso.dataFimAgendamento}"></td>
                             <td th:text="${recurso.horaInicioAgendamento}"></td>
                             <td th:text="${recurso.horaFimAgendamento}"></td>
+                            <td th:if="${verificando}">
+                                <span th:if="${recurso.disponivel}" class="badge bg-success">Disponível</span>
+                                <span th:unless="${recurso.disponivel}" class="badge bg-danger" th:text="${recurso.motivoIndisponibilidade}"></span>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

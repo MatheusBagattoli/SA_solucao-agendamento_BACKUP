@@ -16,13 +16,15 @@ document.querySelectorAll('.excluir-recurso').forEach(function(button) {
                 },
             })
             .then(response => {
-                if (response.ok) {
-                    console.log('Recurso excluído com sucesso.');
-                    linha.remove();
-                } else {
-                    console.error('Erro ao excluir Recurso.');
-                    alert('Erro ao excluir Recurso');
-                }
+                response.text().then(mensagem => {
+                    if (response.ok) {
+                        console.log('Recurso excluído com sucesso.');
+                        linha.remove();
+                    } else {
+                        console.error('Erro ao excluir Recurso:', mensagem);
+                        alert(mensagem);
+                    }
+                });
             })
             .catch(error => {
                 console.error('Erro de rede:', error);

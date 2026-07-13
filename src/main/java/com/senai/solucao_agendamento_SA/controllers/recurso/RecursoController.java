@@ -66,8 +66,12 @@ public class RecursoController {
     //Deletar recurso
     @DeleteMapping("/recursoExcluir/{id}")
     public ResponseEntity<String> excluirRecurso(@PathVariable Long id) {
-        recursoService.RecursoExcluir(id);
+        boolean excluido = recursoService.RecursoExcluir(id);
+        if (!excluido) {
+            return ResponseEntity.status(404).body("Recurso não encontrado (já pode ter sido excluído antes).");
+        }
         return ResponseEntity.ok().body("Excluido");
     }
 }
+
 
