@@ -3,6 +3,10 @@ package com.senai.solucao_agendamento_SA.controllers.usuario;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioLoginDto;
+import com.senai.solucao_agendamento_SA.entities.UsuarioEntity;
+import com.senai.solucao_agendamento_SA.sessao.SessaoDto;
+import com.senai.solucao_agendamento_SA.sessao.SessaoUtil;
+import jakarta.servlet.http.HttpSession;
 import com.senai.solucao_agendamento_SA.mapper.UsuarioMapper;
 import com.senai.solucao_agendamento_SA.services.UsuarioService;
 import jakarta.validation.Valid;
@@ -29,13 +33,20 @@ public class UsuarioController {
 
 
     //Realizando login
+    //Realizando login
     @PostMapping("/login")
-    public String realizarLogin(UsuarioLoginDto login, Model model, RedirectAttributes redirectAttributes){
+    public String realizarLogin(UsuarioLoginDto login, Model model, HttpSession session){
         try {
-            usuarioMapeamento.dtoparaEntityLogin(login);
-            usuarioService.realizarLogin(login); // puxou direto o metodo do service de realizarLogin.
+            UsuarioEntity usuarioEntity = usuarioService.realizarLogin(login);
 
-            redirectAttributes.addFlashAttribute("usuarioLogin", login);
+            SessaoDto sessaoDto = new SessaoDto(
+                    usuarioEntity.getId(),
+                    usuarioEntity.getNome(),
+                    usuarioEntity.getEmail(),
+                    usuarioEntity.getMatricula()
+            );
+            SessaoUtil.logar(session, sessaoDto);
+
             return "redirect:/home";
         }catch (Exception e){
             model.addAttribute("erro", e.getMessage());

@@ -24,15 +24,11 @@ public class UsuarioService {
         this.usuarioMapeamento = usuarioMapeamento;
     }
 
-
-
     //Logando usuario
-    public void realizarLogin(UsuarioLoginDto login){
+    public UsuarioEntity realizarLogin(UsuarioLoginDto login){
 
-        UsuarioEntity usuarioEntity = usuarioRepository.findByEmailAndSenha(login.email(), login.senha())
+        return usuarioRepository.findByEmailAndSenha(login.email(), login.senha())
                 .orElseThrow(()-> new RuntimeException("Usuário ou senha incoreta!"));
-
-        usuarioMapeamento.entityparaDto(usuarioEntity);
     }
 
 

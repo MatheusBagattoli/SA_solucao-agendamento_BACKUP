@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualizar Reserva</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container m-0">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <span style="margin-right: 20px"></span>
+    <div class="collapse navbar-collapse " id="menuPrincipal">
+      <ul class="navbar-nav ms-auto">
+        <a class="navbar-brand" th:href="@{/home}">Zheiri Serviços</a>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="sidebarMenuLabel">Painel de Controle</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav flex-column">
+      <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/home}">Inicio</a></li>
+      <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/reservaLista}">Agendamentos</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary" th:href="@{/login}">sair</a></li>
+    </ul>
+  </div>
+</div>
+
+<main class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <h1 class="h3 mb-4">Detalhes da reserva</h1>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+
+          <dl class="row mb-0">
+            <dt class="col-sm-4">Colaborador</dt>
+            <dd class="col-sm-8" th:text="${reserva.colaboradorNome}"></dd>
+
+            <dt class="col-sm-4">Espaço/Equipamento</dt>
+            <dd class="col-sm-8" th:text="${reserva.recursoDescricao}"></dd>
+
+            <dt class="col-sm-4">Data</dt>
+            <dd class="col-sm-8" th:text="${reserva.data}"></dd>
+
+            <dt class="col-sm-4">Hora inicial</dt>
+            <dd class="col-sm-8" th:text="${reserva.horaInicial}"></dd>
+
+            <dt class="col-sm-4">Hora final</dt>
+            <dd class="col-sm-8" th:text="${reserva.horaFinal}"></dd>
+
+            <dt class="col-sm-4">Situação</dt>
+            <dd class="col-sm-8">
+              <span class="badge bg-danger" th:if="${reserva.cancelada}">Cancelada</span>
+              <span class="badge bg-success" th:unless="${reserva.cancelada}">Ativa</span>
+            </dd>
+
+            <th:block th:if="${reserva.cancelada}">
+              <dt class="col-sm-4">Data do cancelamento</dt>
+              <dd class="col-sm-8" th:text="${reserva.dataCancelamento}"></dd>
+
+              <dt class="col-sm-4">Motivo do cancelamento</dt>
+              <dd class="col-sm-8" th:text="${reserva.observacao}"></dd>
+            </th:block>
+          </dl>
+
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <a class="btn btn-outline-secondary" th:href="@{/reservaLista}">Voltar</a>
+            <a class="btn btn-danger" th:if="${!reserva.cancelada}" th:href="@{/reservaCancelar/{id}(id=${reserva.id})}">Cancelar reserva</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

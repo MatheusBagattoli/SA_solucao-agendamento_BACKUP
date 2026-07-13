@@ -2,7 +2,9 @@ package com.senai.solucao_agendamento_SA.services;
 
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoAtualizar;
 import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoDto;
+import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoSelecaoDto;
 import com.senai.solucao_agendamento_SA.entities.RecursoEntity;
+import com.senai.solucao_agendamento_SA.dtos.recurso.RecursoListaDto;
 import com.senai.solucao_agendamento_SA.mapper.RecursoMapper;
 import com.senai.solucao_agendamento_SA.repositories.RecursoRepository;
 import org.springframework.stereotype.Service;
@@ -80,6 +82,37 @@ public class RecursoService {
         recurso1.setHoraInicioAgendamento(recurso.horaInicioAgendamento());
         recurso1.setHoraFimAgendamento(recurso.horaFimAgendamento());
         return true;
+    }
+
+    //Listagem simplificada (id + descricao) usada para popular o select de recursos na tela de reserva
+    public List<RecursoSelecaoDto> listarParaSelecao(){
+        List<RecursoEntity> lista = recursoRepository.findAll();
+
+        List<RecursoSelecaoDto> listaDto = new ArrayList<>();
+        for (RecursoEntity entity : lista) {
+            listaDto.add(new RecursoSelecaoDto(entity.getId(), entity.getDescricao()));
+        }
+        return listaDto;
+    }
+
+    //Listagem completa com id, usada na tela simples de Recursos (com editar/excluir)
+    public List<RecursoListaDto> listarComId(){
+        List<RecursoEntity> lista = recursoRepository.findAll();
+
+        List<RecursoListaDto> listaDto = new ArrayList<>();
+        for (RecursoEntity entity : lista) {
+            listaDto.add(new RecursoListaDto(
+                    entity.getId(),
+                    entity.getDescricao(),
+                    entity.getTipo(),
+                    entity.getDiaSemana(),
+                    entity.getDataInicioAgendamento(),
+                    entity.getDataFimAgendamento(),
+                    entity.getHoraInicioAgendamento(),
+                    entity.getHoraFimAgendamento()
+            ));
+        }
+        return listaDto;
     }
 
 

@@ -5,6 +5,9 @@ import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioAtualizarDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioCadastroDto;
 import com.senai.solucao_agendamento_SA.dtos.usuario.UsuarioSaidaDto;
 import com.senai.solucao_agendamento_SA.services.UsuarioService;
+import com.senai.solucao_agendamento_SA.sessao.SessaoDto;
+import com.senai.solucao_agendamento_SA.sessao.SessaoUtil;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,15 +30,27 @@ public class PageUsuarioController {
         return "redirect:/login";
     }
 
-
     @GetMapping("/login")
     public String getLogin(){
         return "login";
     }
 
     @GetMapping("/home")
-    public String getHome(){
+    public String getHome(HttpSession session, Model model){
+        SessaoDto usuarioLogado = SessaoUtil.usuarioLogado(session);
+        model.addAttribute("usuarioLogado", usuarioLogado);
         return "home";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        SessaoUtil.deslogar(session);
+        return "redirect:/login";
+    }
+
+    @GetMapping("/quemSomos")
+    public String getQuemSomos(){
+        return "quemSomos";
     }
 
     @GetMapping("/usuarioCadastro")
@@ -60,7 +75,5 @@ public class PageUsuarioController {
 
         return "usuarioAtualizar";
     }
-
-
 
 }

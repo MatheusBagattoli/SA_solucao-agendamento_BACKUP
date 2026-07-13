@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sidebarMenuLabel">Painel de Controle</h5>
+        <h5 class="offcanvas-title" id="sidebarMenuLabel">Menu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
@@ -41,29 +41,29 @@
                 <a class="nav-link text-secondary" th:href="@{/home}">Inicio</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" th:href="@{/cadastrarUsuario}">Cadastrar Usuario</a>
+                <a class="nav-link text-secondary" th:href="@{/usuarioCadastro}">Cadastrar Usuario</a>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link text-secondary"  th:href="@{/recursoCadastra}">Cadastrar recurso</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary"  th:href="@{/}">Agendar espaço ou equipamento</a>
+                <a class="nav-link text-secondary"  th:href="@{/reservaCadastrar}">Agendar espaço ou equipamento</a>
             </li>
             <hr>
             <p class="card-text">Visualizações</p>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" th:href="@{/listaUsuarios}">Usuarios</a>
+                <a class="nav-link text-secondary" th:href="@{/usuarioLista}">Usuarios</a>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link text-secondary" th:href="@{/recursoLista}">Espaço e agendamento</a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" th:href="@{/}">Agendamentos</a>
+                <a class="nav-link text-secondary" th:href="@{/reservaLista}">Agendamentos</a>
             </li>
             <hr>
             <p class="card-text">Informações</p>
             <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" th:href="@{/}">Sobre a equipe</a>
+                <a class="nav-link text-secondary" th:href="@{/quemSomos}">Sobre a equipe</a>
             </li>
 
 
@@ -80,8 +80,9 @@
 <main class="container py-5">
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-4">
-            <h1 class="display-5 fw-bold">Bem-vindo ao Sistema de Agendamento de Recursosa</h1>
-            <p class="col-md-8 fs-4">Esta é uma página inicial simples feita com HTML puro e Bootstrap.</p>
+            <h1 class="display-5 fw-bold">Bem-vindo ao Sistema de Agendamento de Recursos</h1>
+            <p class="col-md-8 fs-4" th:if="${usuarioLogado != null}">Olá, <span th:text="${usuarioLogado.nome}"></span>!</p>
+            <p class="col-md-8 fs-4" th:if="${usuarioLogado == null}">Sistema desenvolvido para controlar o cadastro de usuários, recursos e agendamentos, garantindo uma organização eficiente dos espaços e equipamentos disponíveis.</p>
         </div>
     </div>
 
@@ -94,7 +95,7 @@
                 <div class="card h-100">
                     <div class="card-body text-center">
                         <h2 class="h5 card-title">Usuario</h2>
-                        <p class="card-text">Cadastre um usuario no sistema.</p>
+                        <p class="card-text">Cadastre um usuario no sistema</p>
                         <a  th:href="@{/usuarioCadastro}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
@@ -104,7 +105,7 @@
                 <div class="card h-100">
                     <div class="card-body text-center">
                         <h2 class="h5 card-title">Recurso</h2>
-                        <p class="card-text">Cadastre um recurso no sistema.</p>
+                        <p class="card-text">Cadastre um recurso no sistema</p>
                         <a  th:href="@{/recursoCadastra}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
@@ -114,8 +115,8 @@
                 <div class="card h-100">
                     <div class="card-body text-center">
                         <h2 class="h5 card-title">Agendar</h2>
-                        <p class="card-text">Agende um espaço ou produto desejado.</p>
-                        <a href="#" class="btn btn-outline-primary">Acessar</a>
+                        <p class="card-text">Agende um espaço ou equipamento desejado</p>
+                        <a th:href="@{/reservaCadastrar}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
             </div>
@@ -129,7 +130,7 @@
                 <div class="card h-100">
                     <div class="card-body text-center">
                         <h2 class="h5 card-title">Usuarios</h2>
-                        <p class="card-text">Visualize os Usuarios cadastrados no sistema.</p>
+                        <p class="card-text">Visualize os Usuarios cadastrados no sistema</p>
                         <a th:href="@{/usuarioLista}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
@@ -138,9 +139,9 @@
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body text-center">
-                        <h2 class="h5 card-title">Espaço e equipamento</h2>
-                        <p class="card-text">Visualize informações sobre a empresa.</p>
-                        <a th:href="@{/recursoLista}" class="btn btn-outline-primary">Acessar</a>
+                        <h2 class="h5 card-title">Quem Somos</h2>
+                        <p class="card-text">Visualize informações sobre a empresa</p>
+                        <a th:href="@{/quemSomos}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
             </div>
@@ -150,8 +151,8 @@
                 <div class="card h-100">
                     <div class="card-body text-center">
                         <h2 class="h5 card-title">Recursos</h2>
-                        <p class="card-text">Visualize Recursos cadastardos.</p>
-                        <a th:href="@{/recursoLista}" class="btn btn-outline-primary">Acessar</a>
+                        <p class="card-text">Visualize recursos cadastrados</p>
+                        <a th:href="@{/recursos}" class="btn btn-outline-primary">Acessar</a>
                     </div>
                 </div>
             </div>

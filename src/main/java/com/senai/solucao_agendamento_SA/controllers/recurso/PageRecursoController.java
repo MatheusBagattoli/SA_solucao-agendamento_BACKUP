@@ -31,10 +31,16 @@ public class PageRecursoController {
     @GetMapping("/recursoLista")
     public String getListaEspacoEquipamento(Model model){
         List<RecursoDto> lista = recursoServicee.listarRecurso();
-        model.addAttribute("recurso", lista);
+        model.addAttribute("recursos", lista);
         return "recursoLista";
     }
 
+    //Tela simples de listagem de Recursos (com editar/excluir), separada do recursoLista
+    @GetMapping("/recursos")
+    public String getRecursos(Model model){
+        model.addAttribute("recursos", recursoServicee.listarComId());
+        return "recursos";
+    }
 
     @GetMapping("/recursoAtualizar/{id}")
     public String getRecursoAtualizar(@PathVariable @Valid Long id, Model model){

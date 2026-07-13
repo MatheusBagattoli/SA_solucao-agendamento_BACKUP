@@ -23,4 +23,9 @@ public record ReservaEntradaDto(
         LocalTime horaFinal
 
 ) {
+        //Metodo de conveniencia para nao precisar informar os parametros manualmente no controller
+        public static ReservaEntradaDto parametrosVazios() {
+                return new ReservaEntradaDto(null, null, null, null, null);
+        }
 }
+
