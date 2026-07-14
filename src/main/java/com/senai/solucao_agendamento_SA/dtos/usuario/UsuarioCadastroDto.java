@@ -34,7 +34,7 @@ public record UsuarioCadastroDto(
 ) {
 
         //Este metodo pertence ao record, aqui estou criando UsuarioCadastroDto vazio, para que eu não tenha que informa no controller estes parametros,
-        //assim só pucho este metodo la no controller
+        //assim só puxo este metodo la no controller
         public static UsuarioCadastroDto parametrosVazio() {
                 return new UsuarioCadastroDto(
                         "", null, "", "", "",""

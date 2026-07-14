@@ -102,7 +102,7 @@ public class RecursoService {
         return listaDto;
     }
 
-    //Listagem completa com id, usada na tela simples de Recursos (com editar/excluir)
+    //Listagem completa com id, usada na tela de Recursos com editar e excluir
     public List<RecursoListaDto> listarComId(){
         List<RecursoEntity> lista = recursoRepository.findAll();
 

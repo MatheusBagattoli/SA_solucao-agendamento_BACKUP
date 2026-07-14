@@ -58,7 +58,7 @@ public class PageRecursoController {
         return "recursoLista";
     }
 
-    //Tela simples de listagem de Recursos (com editar/excluir), separada do recursoLista
+    //Tela simples de listagem de Recursos, separada do recursoLista
     @GetMapping("/recursos")
     public String getRecursos(Model model){
         model.addAttribute("recursos", recursoServicee.listarComId());

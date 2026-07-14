@@ -8,8 +8,6 @@ document.querySelectorAll('.excluir').forEach(function(button) {
 
             const id = this.dataset.id;
 
-            //console.log("id=" + id);
-
             // Realize a chamada AJAX para excluir o usuario
             fetch(`/usuarioExcluir/${id}`, {
                 method: 'DELETE',

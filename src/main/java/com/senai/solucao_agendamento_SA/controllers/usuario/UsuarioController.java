@@ -31,9 +31,7 @@ public class UsuarioController {
         this.usuarioMapeamento = usuarioMapeamento;
     }
 
-
-    //Realizando login
-    //Realizando login
+    //Realizar o login
     @PostMapping("/login")
     public String realizarLogin(UsuarioLoginDto login, Model model, HttpSession session){
         try {
@@ -55,7 +53,7 @@ public class UsuarioController {
     }
 
 
-    //Cadastro usuario
+    //Cadastro do usuario
     @PostMapping("/usuarioCadastro")
     public String cadastrarUsuario(@Valid @ModelAttribute("usuario") UsuarioCadastroDto cadastroDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
 

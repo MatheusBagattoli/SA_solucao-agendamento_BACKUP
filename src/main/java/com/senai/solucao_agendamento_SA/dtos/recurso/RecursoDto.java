@@ -37,7 +37,7 @@ public record RecursoDto(
 ) {
 
     //Este metodo pertence ao record, aqui estou criando EspacoEquipamento_EntradaDto vazio, para que eu não tenha que informa no controller estes parametros,
-    //assim só pucho este metodo la no controller, evitando repetição
+    //assim só puxo este metodo la no controller, evitando repetição
     public static RecursoDto parametrosVazios(){
         return new RecursoDto(
                 "","",null,null,null,null,null

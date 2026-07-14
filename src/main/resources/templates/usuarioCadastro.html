@@ -9,13 +9,8 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
 
-
     <div class="container m-0">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <span style="margin-right: 20px"></span>
-
 
         <div class="collapse navbar-collapse " id="menuPrincipal">
             <ul class="navbar-nav ms-auto">
@@ -27,40 +22,6 @@
         </div>
     </div>
 </nav>
-
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sidebarMenuLabel">Painel de Controle</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-
-    <div class="offcanvas-body">
-        <ul class="nav flex-column">
-            <li class="nav-item mb-3">
-                <a class="navbar-brand" th:href="@{/home}">Inicio</a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">Servicos</a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">agendamentos</a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" th:href="@{/listaUsuarios}">Usuarios</a>
-            </li>
-            <hr>
-            <p class="card-text">Ajuda e configuração</p>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-secondary" href="#">Quem somos</a>
-            </li>
-            <li class="nav-item">
-                <a class="navbar-brand" th:href="@{/login}">sair</a>
-            </li>
-        </ul>
-    </div>
-</div>
 
 <main class="container py-4">
     <div class="row justify-content-center">

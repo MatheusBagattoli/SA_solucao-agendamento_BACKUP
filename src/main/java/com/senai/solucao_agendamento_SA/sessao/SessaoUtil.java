@@ -2,7 +2,6 @@ package com.senai.solucao_agendamento_SA.sessao;
 
 import jakarta.servlet.http.HttpSession;
 
-    // Classe utilitaria (metodos estaticos) para guardar e consultar o usuario logado na HttpSession.
     public class SessaoUtil {
 
     // Chave usada para guardar o usuario logado dentro da HttpSession
@@ -12,7 +11,6 @@ import jakarta.servlet.http.HttpSession;
         // Classe utilitaria, nao deve ser instanciada
     }
 
-    // Guarda o usuario logado na sessao (chamado apos o login dar certo)
     public static void logar(HttpSession session, SessaoDto usuario) {
         session.setAttribute(CHAVE_USUARIO_LOGADO, usuario);
     }
@@ -27,7 +25,7 @@ import jakarta.servlet.http.HttpSession;
         return usuarioLogado(session) != null;
     }
 
-    // Remove o usuario da sessao (logout)
+    // Remove o usuario da sessao
     public static void deslogar(HttpSession session) {
         session.removeAttribute(CHAVE_USUARIO_LOGADO);
     }

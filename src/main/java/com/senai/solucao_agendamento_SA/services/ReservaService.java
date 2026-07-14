@@ -119,9 +119,6 @@ public class ReservaService {
         }
 
         //Salvar reserva
-        //Regra 5: nao pode reservar para um colaborador sem cadastro
-        //Regra 6: nao pode reservar para um recurso sem cadastro
-        //Regra 8: dataCancelamento deve ficar nula em uma reserva nova
         public void salvar(ReservaEntradaDto dto) {
 
             UsuarioEntity colaborador = usuarioRepository.findById(dto.colaboradorId())
@@ -150,7 +147,7 @@ public class ReservaService {
                 throw new IllegalArgumentException("Este recurso nao esta disponivel no dia da semana escolhido.");
             }
 
-            //Verifica conflito de horario com outras reservas ativas do mesmo recurso na mesma data
+            //Verifica o conflito de horario com outras reservas ativas do mesmo recurso na mesma data
             boolean existeConflito = reservaRepository
                     .findByRecurso_IdAndDataAndDataCancelamentoIsNull(recurso.getId(), dto.data())
                     .stream()
@@ -194,9 +191,6 @@ public class ReservaService {
         }
 
         //Cancelar reserva
-        //Regra 7: so pode cancelar ate 1 dia antes da data agendada
-        //Regra 9: a unica alteracao permitida em uma reserva ja registrada e o cancelamento
-        //Regra 10: a observacao (motivo) e obrigatoria (@NotBlank no CancelamentoReservaDto)
         public void cancelar(Long id, CancelamentoReservaDto dto) {
 
             ReservaEntity reserva = reservaRepository.findById(id)
