@@ -9,6 +9,7 @@ import com.senai.solucao_agendamento_SA.dtos.reserva.ReservaEntradaDto;
 import com.senai.solucao_agendamento_SA.services.RecursoService;
 import com.senai.solucao_agendamento_SA.services.ReservaService;
 import com.senai.solucao_agendamento_SA.services.UsuarioService;
+import com.senai.solucao_agendamento_SA.services.AvaliacaoService;
 
 @Controller
 public class PageReservaController {
@@ -16,11 +17,13 @@ public class PageReservaController {
     private final ReservaService reservaService;
     private final UsuarioService usuarioService;
     private final RecursoService recursoService;
+    private final AvaliacaoService avaliacaoService;
 
-    public PageReservaController(ReservaService reservaService, UsuarioService usuarioService, RecursoService recursoService) {
+    public PageReservaController(ReservaService reservaService, UsuarioService usuarioService, RecursoService recursoService, AvaliacaoService avaliacaoService) {
         this.reservaService = reservaService;
         this.usuarioService = usuarioService;
         this.recursoService = recursoService;
+        this.avaliacaoService = avaliacaoService;
     }
 
     @GetMapping("/reservaCadastrar")
@@ -35,6 +38,16 @@ public class PageReservaController {
     public String listar(Model model) {
         model.addAttribute("reservas", reservaService.listar());
         return "reservaLista";
+    }
+
+    @GetMapping("/reservaVisualizar/{id}")
+    public String visualizar(@PathVariable Long id, Model model) {
+
+        model.addAttribute("reserva", reservaService.buscar(id));
+        model.addAttribute("podeAvaliar", avaliacaoService.podeAvaliar(id));
+        model.addAttribute("jaAvaliada", avaliacaoService.jaFoiAvaliada(id));
+
+        return "reservaVisualizar";
     }
 
     @GetMapping("/reservaCancelar/{id}")

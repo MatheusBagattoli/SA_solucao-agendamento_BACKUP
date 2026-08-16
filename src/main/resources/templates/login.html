@@ -18,6 +18,10 @@
                         E-mail ou senha invalidos.
                     </div>
 
+                    <div class="alert alert-success" role="alert" th:if="${mensagem}" th:text="${mensagem}">
+                        Usuario cadastrado com sucesso!
+                    </div>
+
                     <form th:action="@{/login}" method="post">
 
                         <div class="mb-3">

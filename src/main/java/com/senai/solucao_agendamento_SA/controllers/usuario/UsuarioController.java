@@ -64,7 +64,7 @@ public class UsuarioController {
         try {
             usuarioService.cadastroUsuario(cadastroDto);
             redirectAttributes.addFlashAttribute("mensagem", "Usuario cadastrado com sucesso!");
-            return"redirect:/home";
+            return"redirect:/login";
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("erro", e.getMessage());
             redirectAttributes.addFlashAttribute("usuario",cadastroDto); // Mantem os dados digitados

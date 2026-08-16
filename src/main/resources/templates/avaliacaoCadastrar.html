@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Avaliar recurso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container m-0">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span style="margin-right: 20px"></span>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            <ul class="navbar-nav ms-auto">
+                <a class="navbar-brand" th:href="@{/home}">AgendaHub</a>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebarMenuLabel">Painel de Controle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="nav flex-column">
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/home}">Inicio</a></li>
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/usuarioCadastro}">Cadastrar Usuario</a></li>
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/recursoCadastra}">Cadastrar recurso</a></li>
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/reservaCadastrar}">Agendar espaço ou equipamento</a></li>
+            <hr>
+            <p class="card-text">Visualizações</p>
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/usuarioLista}">Usuarios</a></li>
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/recursoLista}">Espaço e agendamento</a></li>
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/reservaLista}">Agendamentos</a></li>
+            <hr>
+            <p class="card-text">Informações</p>
+            <li class="nav-item mb-3"><a class="nav-link text-secondary" th:href="@{/}">Sobre a equipe</a></li>
+            <li class="nav-item"><a class="nav-link text-secondary" th:href="@{/login}">Sair</a></li>
+        </ul>
+    </div>
+</div>
+
+<main class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 mb-1">Avaliar recurso</h1>
+                    <p class="text-secondary mb-0">Avalie o recurso utilizado nesta reserva.</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <div class="alert alert-danger" th:if="${erro}">
+                        <span th:text="${erro}"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Espaço/Equipamento</label>
+                        <input type="text" class="form-control" th:value="${reserva.recursoDescricao}" disabled>
+                    </div>
+
+                    <form th:action="@{/avaliacaoCadastrar/{id}(id=${reserva.id})}" th:object="${avaliacao}" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nota</label>
+
+                            <div class="d-flex gap-2 flex-wrap">
+
+                                <input type="radio" class="btn-check" th:field="*{nota}" value="1" id="nota1">
+                                <label class="btn btn-outline-warning" for="nota1">⭐ 1</label>
+
+                                <input type="radio" class="btn-check" th:field="*{nota}" value="2" id="nota2">
+                                <label class="btn btn-outline-warning" for="nota2">⭐ 2</label>
+
+                                <input type="radio" class="btn-check" th:field="*{nota}" value="3" id="nota3">
+                                <label class="btn btn-outline-warning" for="nota3">⭐ 3</label>
+
+                                <input type="radio" class="btn-check" th:field="*{nota}" value="4" id="nota4">
+                                <label class="btn btn-outline-warning" for="nota4">⭐ 4</label>
+
+                                <input type="radio" class="btn-check" th:field="*{nota}" value="5" id="nota5">
+                                <label class="btn btn-outline-warning" for="nota5">⭐ 5</label>
+
+                            </div>
+
+                            <div class="text-danger small mt-1" th:if="${#fields.hasErrors('nota')}" th:errors="*{nota}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="comentario" class="form-label">Comentário</label>
+
+                            <textarea class="form-control" id="comentario" rows="5" maxlength="500"
+                                      th:field="*{comentario}"
+                                      placeholder="Conte como foi sua experiência com este recurso..."></textarea>
+
+                            <div class="form-text">Opcional. Máximo de 500 caracteres.</div>
+
+                            <div class="text-danger small mt-1"
+                                 th:if="${#fields.hasErrors('comentario')}"
+                                 th:errors="*{comentario}"></div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a class="btn btn-outline-secondary"
+                               th:href="@{/reservaVisualizar/{id}(id=${reserva.id})}">
+                                Cancelar
+                            </a>
+
+                            <button type="submit" class="btn btn-primary">
+                                Avaliar
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

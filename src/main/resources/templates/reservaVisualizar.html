@@ -73,7 +73,28 @@
               <dd class="col-sm-8" th:text="${reserva.observacao}"></dd>
             </th:block>
           </dl>
+          <div class="border-top pt-4 mt-4" th:if="${podeAvaliar or jaAvaliada}">
+            <h2 class="h5 mb-3">
+              Avaliação do recurso
+            </h2>
 
+            <div th:if="${podeAvaliar}">
+              <p class="text-secondary">A reserva já foi concluída. Conte como foi sua experiência.</p>
+              <a class="btn btn-primary" th:href="@{/avaliacaoCadastrar/{id}(id=${reserva.id})}">⭐ Avaliar recurso</a>
+            </div>
+
+            <div th:if="${jaAvaliada}">
+
+              <div class="alert alert-success mb-0">
+                <strong>
+                  Avaliação realizada!
+                </strong>
+                <p class="mb-0 mt-1">
+                  Esta reserva já recebeu uma avaliação.
+                </p>
+              </div>
+            </div>
+          </div>
           <div class="d-flex justify-content-end gap-2 mt-4">
             <a class="btn btn-outline-secondary" th:href="@{/reservaLista}">Voltar</a>
             <a class="btn btn-danger" th:if="${!reserva.cancelada}" th:href="@{/reservaCancelar/{id}(id=${reserva.id})}">Cancelar reserva</a>
