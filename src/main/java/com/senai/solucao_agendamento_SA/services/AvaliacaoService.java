@@ -26,8 +26,7 @@ public class AvaliacaoService {
     // Verifica se a reserva pode receber uma avaliação
     public boolean podeAvaliar(Long reservaId) {
 
-        ReservaEntity reserva = reservaRepository.findById(reservaId)
-                .orElse(null);
+        ReservaEntity reserva = reservaRepository.findById(reservaId).orElse(null);
 
         if (reserva == null) {
             return false;
@@ -44,48 +43,27 @@ public class AvaliacaoService {
         }
 
         // A reserva precisa ter terminado
-        LocalDateTime fimDaReserva = LocalDateTime.of(
-                reserva.getData(),
-                reserva.getHoraFinal()
-        );
-
+        LocalDateTime fimDaReserva = LocalDateTime.of(reserva.getData(), reserva.getHoraFinal());
         return LocalDateTime.now().isAfter(fimDaReserva);
     }
 
     // Salva a avaliação
-    public void salvar(
-            Long reservaId,
-            AvaliacaoEntradaDto dto
-    ) {
+    public void salvar(Long reservaId, AvaliacaoEntradaDto dto) {
 
-        ReservaEntity reserva = reservaRepository.findById(reservaId)
-                .orElseThrow(() ->
-                        new IllegalArgumentException(
-                                "Reserva nao encontrada."
-                        )
-                );
+        ReservaEntity reserva = reservaRepository.findById(reservaId).orElseThrow(() -> new IllegalArgumentException("Reserva nao encontrada."));
 
         if (reserva.getDataCancelamento() != null) {
-            throw new IllegalArgumentException(
-                    "Nao e possivel avaliar uma reserva cancelada."
-            );
+            throw new IllegalArgumentException("Nao e possivel avaliar uma reserva cancelada.");
         }
 
         if (avaliacaoRepository.existsByReserva_Id(reservaId)) {
-            throw new IllegalArgumentException(
-                    "Esta reserva ja foi avaliada."
-            );
+            throw new IllegalArgumentException("Esta reserva ja foi avaliada.");
         }
 
-        LocalDateTime fimDaReserva = LocalDateTime.of(
-                reserva.getData(),
-                reserva.getHoraFinal()
-        );
+        LocalDateTime fimDaReserva = LocalDateTime.of(reserva.getData(), reserva.getHoraFinal());
 
         if (LocalDateTime.now().isBefore(fimDaReserva)) {
-            throw new IllegalArgumentException(
-                    "A avaliacao so pode ser realizada apos o termino da reserva."
-            );
+            throw new IllegalArgumentException("A avaliacao so pode ser realizada apos o termino da reserva.");
         }
 
         AvaliacaoEntity avaliacao = new AvaliacaoEntity();
